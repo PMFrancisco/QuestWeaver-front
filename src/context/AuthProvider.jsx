@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
+    const user = auth.currentUser;
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log('Usuario logueado:', user);

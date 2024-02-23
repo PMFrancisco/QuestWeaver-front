@@ -24,6 +24,12 @@ export const NavBar = () => {
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarItem>
+            <Link to="/profile">Profile</Link>
+          </NavbarItem>
+
+        </NavbarContent>
+        <NavbarContent justify="end">
+          <NavbarItem>
             <Link to="/signup">Sign up</Link>
           </NavbarItem>
           <NavbarItem>
