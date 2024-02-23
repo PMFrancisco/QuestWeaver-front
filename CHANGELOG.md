@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.1.0...v0.2.0) (2024-02-23)
+
+
+### Features
+
+* added profile ([4ae5229](https://github.com/PMFrancisco/QuestWeaver-front/commit/4ae5229f9d6f50980ccce10d083e344259b212cd))
+
+
+
 # [0.1.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.0.1...v0.1.0) (2024-02-23)
 
 
