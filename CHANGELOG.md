@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.2.0...v0.2.1) (2024-02-24)
+
+
+### Bug Fixes
+
+* fixed reload issue ([0e5d566](https://github.com/PMFrancisco/QuestWeaver-front/commit/0e5d56671d8d22392f714c18c0118f0ad3ec4c11))
+
+
+
 # [0.2.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.1.0...v0.2.0) (2024-02-23)
 
 
