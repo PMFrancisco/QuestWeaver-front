@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.2.1...v0.3.0) (2024-02-24)
+
+
+### Features
+
+* add user to my DB ([39af96e](https://github.com/PMFrancisco/QuestWeaver-front/commit/39af96e6251b8dfb580907bd9cd25ed626bc8560))
+
+
+
 ## [0.2.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.2.0...v0.2.1) (2024-02-24)
 
 
