@@ -3,7 +3,7 @@ import { HomePage } from "./pages/HomePage";
 import { NavBar } from "./components/NavBar";
 import SignUp from "./pages/Signup";
 import Login from "./pages/Login";
-import RequireAuth from "./components/ProtectedRoute";
+import { RequireAuth, AlreadyAuth } from "./components/ProtectedRoute";
 import { Profile } from "./pages/Profile";
 
 function App() {
@@ -14,8 +14,10 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route element={<AlreadyAuth />}>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </Route>
       </Route>
     </Routes>
   );

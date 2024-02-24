@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 
-function RequireAuth() {
+export const RequireAuth = () => {
   let auth = useAuth();
   let location = useLocation();
 
@@ -12,4 +12,13 @@ function RequireAuth() {
   return <Outlet />;
 }
 
-export default RequireAuth;
+export const AlreadyAuth = () => {
+  let auth = useAuth();
+  let location = useLocation();
+
+  if (auth.currentUser) {
+    return <Navigate to="/" state={{ from: location }} />;
+  }
+
+  return <Outlet />;
+}

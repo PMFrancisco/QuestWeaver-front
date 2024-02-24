@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { handleSignOut } from "../service/authService";
-import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const auth = getAuth();
     const logout = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
-      } else {
-        navigate("/login");
       }
     });
 
     return () => logout();
-  }, [navigate]);
+  }, []);
 
   if (!user) {
     return null;
@@ -37,7 +33,7 @@ export const Profile = () => {
     <div className="space-y-6 mt-8">
       <button
         className="w-full inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-        onClick={() => handleSignOut(() => navigate("/login"))}
+        onClick={() => handleSignOut()}
       >
         Sign Out
       </button>
