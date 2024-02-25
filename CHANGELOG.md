@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.5.0...v0.5.1) (2024-02-25)
+
+
+### Bug Fixes
+
+* hook for googlelogin ([58fa4f7](https://github.com/PMFrancisco/QuestWeaver-front/commit/58fa4f7722f126e43e1a43dad821d83f1a2d5dc4))
+
+
+
 # [0.5.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.4.0...v0.5.0) (2024-02-25)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * add user to my DB ([39af96e](https://github.com/PMFrancisco/QuestWeaver-front/commit/39af96e6251b8dfb580907bd9cd25ed626bc8560))
-
-
-
-## [0.2.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.2.0...v0.2.1) (2024-02-24)
-
-
-### Bug Fixes
-
-* fixed reload issue ([0e5d566](https://github.com/PMFrancisco/QuestWeaver-front/commit/0e5d56671d8d22392f714c18c0118f0ad3ec4c11))
 
 
 
