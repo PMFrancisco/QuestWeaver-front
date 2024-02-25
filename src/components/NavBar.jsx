@@ -12,7 +12,6 @@ import { Image } from "@nextui-org/image";
 import { useAuth } from "../context/AuthProvider";
 import { handleSignOut } from "../service/authService";
 
-
 export const NavBar = () => {
   const auth = useAuth();
 

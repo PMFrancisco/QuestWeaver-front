@@ -4,9 +4,12 @@ import { useMutation } from "@tanstack/react-query";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
+import { Input } from "@nextui-org/input";
+import { Button } from "@nextui-org/button";
 
 export default function Login() {
   const navigate = useNavigate();
+  const googleLogin = useGoogleLogin()
   const {
     register,
     handleSubmit,
@@ -38,16 +41,15 @@ export default function Login() {
         </h2>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-700"
-            >
-              Email
-            </label>
-            <input
+            <Input
               type="email"
-              autoComplete="username"
-              className="focus-ring"
+              label="Email"
+              labelPlacement="inside"
+              variant="faded"
+              classNames={{
+                label: "text-sm font-medium text-black",
+                inputWrapper: ["shadow-lg", "border-gray-300"],
+              }}
               {...register("email", { required: true })}
             />
             {errors.email && (
@@ -57,16 +59,15 @@ export default function Login() {
             )}
           </div>
           <div>
-            <label
-              htmlFor="password"
-              className="text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <input
+            <Input
               type="password"
-              className="focus-ring"
-              autoComplete="current-password"
+              label="Password"
+              labelPlacement="inside"
+              variant="faded"
+              classNames={{
+                label: "text-sm font-medium text-black",
+                inputWrapper: ["shadow-lg", "border-gray-300"],
+              }}
               {...register("password", { required: true })}
             />
             {errors.password && (
@@ -75,20 +76,28 @@ export default function Login() {
               </span>
             )}
           </div>
-          <input
-            className="btn-primary"
+          <Button
             type="submit"
             value="Login"
             disabled={isLoading}
-          />
+            fullWidth
+            color="primary"
+            size="lg"
+            className="shadow-lg"
+          >
+            Login
+          </Button>
         </form>
-        <button
-          className="btn-secondary"
-          onClick={useGoogleLogin()}
+        <Button
+          onClick={googleLogin}
           disabled={isLoading}
+          fullWidth
+          color="secondary"
+          size="lg"
+          className="shadow-lg mt-6"
         >
           Login with Google
-        </button>
+        </Button>
       </div>
     </div>
   );

@@ -5,19 +5,20 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { Input } from "@nextui-org/input";
 import { createUser } from "../service/user";
+import { Button } from "@nextui-org/button";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
 
 
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const googleLogin = useGoogleLogin()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  // Define the mutation for signing up
   const { mutate: signupMutation, isLoading } = useMutation({
     mutationKey: "signup",
     mutationFn: async (formData) => {
@@ -29,24 +30,22 @@ export default function SignUp() {
       );
       const user = userCredential.user;
 
-      // Assuming createUser function sends data to your backend
       await createUser({
         firebaseUserID: user.uid,
-        email: user.email, // Firebase Auth provides this
+        email: user.email,
         firstName,
         lastName,
         displayName: displayName || `${firstName} ${lastName}`,
-        profileImage: "", // Default or allow users to set this in an extended form
+        profileImage: "",
       });
 
       return user;
     },
     onSuccess: () => {
-      navigate("/"); // Adjust as necessary
+      navigate("/");
     },
     onError: (error) => {
       console.error("Signup error:", error);
-      // Handle errors, e.g., show an error message
     },
   });
 
@@ -151,21 +150,28 @@ export default function SignUp() {
               </span>
             )}
           </div>
-          <button
-            className="btn-primary"
+          <Button
             type="submit"
-            disabled={signupMutation.isLoading}
+            value="Login"
+            disabled={isLoading}
+            fullWidth
+            color="primary"
+            size="lg"
+            className="shadow-lg"
           >
-            Sign up
-          </button>
+            Login
+          </Button>
         </form>
-        <button
-          className="btn-secondary"
-          onClick={useGoogleLogin()}
+        <Button
+          onClick={googleLogin}
           disabled={isLoading}
+          fullWidth
+          color="secondary"
+          size="lg"
+          className="shadow-lg mt-6"
         >
           Sign up with Google
-        </button>
+        </Button>
       </div>
     </div>
   );
