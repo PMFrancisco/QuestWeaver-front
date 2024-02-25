@@ -1,3 +1,12 @@
+# [0.5.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.4.0...v0.5.0) (2024-02-25)
+
+
+### Features
+
+* sign up creates user in firebase and DB ([4506e3c](https://github.com/PMFrancisco/QuestWeaver-front/commit/4506e3c51a81479623433db8ca6fe64bc9b3e78f))
+
+
+
 # [0.4.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.3.1...v0.4.0) (2024-02-25)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * fixed reload issue ([0e5d566](https://github.com/PMFrancisco/QuestWeaver-front/commit/0e5d56671d8d22392f714c18c0118f0ad3ec4c11))
-
-
-
-# [0.2.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.1.0...v0.2.0) (2024-02-23)
-
-
-### Features
-
-* added profile ([4ae5229](https://github.com/PMFrancisco/QuestWeaver-front/commit/4ae5229f9d6f50980ccce10d083e344259b212cd))
 
 
 
