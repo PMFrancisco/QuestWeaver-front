@@ -5,6 +5,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { Input } from "@nextui-org/input";
 import { createUser } from "../service/user";
+import { useGoogleLogin } from "../hooks/useGoogleLogin";
+
 
 
 export default function SignUp() {
@@ -157,6 +159,13 @@ export default function SignUp() {
             Sign up
           </button>
         </form>
+        <button
+          className="btn-secondary"
+          onClick={useGoogleLogin()}
+          disabled={isLoading}
+        >
+          Sign up with Google
+        </button>
       </div>
     </div>
   );

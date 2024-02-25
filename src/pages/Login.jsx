@@ -1,16 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import {
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
-import { createUser } from "../service/user";
+import { useGoogleLogin } from "../hooks/useGoogleLogin";
+
 export default function Login() {
   const navigate = useNavigate();
-  const provider = new GoogleAuthProvider();
   const {
     register,
     handleSubmit,
@@ -32,25 +28,6 @@ export default function Login() {
 
   const onSubmit = (data) => {
     loginMutate(data);
-  };
-
-  const googleLogin = async () => {
-    try {
-      const { user } = await signInWithPopup(auth, provider);
-
-      const profileInfo = {
-        firebaseUserID: user.uid,
-        displayName: user.displayName,
-        firstName: user.displayName.split(" ")[0],
-        lastName: user.displayName.split(" ")[1] || "",
-        profileImage: user.photoURL,
-      };
-
-      await createUser(profileInfo);
-      navigate("/");
-    } catch (error) {
-      console.error("Error logging in with Google:", error);
-    }
   };
 
   return (
@@ -106,8 +83,8 @@ export default function Login() {
           />
         </form>
         <button
-          className="mt-6 w-full inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-          onClick={googleLogin}
+          className="btn-secondary"
+          onClick={useGoogleLogin()}
           disabled={isLoading}
         >
           Login with Google

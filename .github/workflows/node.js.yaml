@@ -32,5 +32,3 @@ jobs:
         prerelease: false
         tag_name: ${{ steps.changelog.outputs.version }}
 
-    - name: Pull changes
-      run: git pull
