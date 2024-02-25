@@ -7,7 +7,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { auth } from "../config/firebase";
-import { createProfile } from "../service/user";
+import { createUser } from "../service/user";
 export default function Login() {
   const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
@@ -46,7 +46,7 @@ export default function Login() {
         profileImage: user.photoURL,
       };
 
-      await createProfile(profileInfo);
+      await createUser(profileInfo);
       navigate("/");
     } catch (error) {
       console.error("Error logging in with Google:", error);
