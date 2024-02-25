@@ -25,7 +25,7 @@ export const Profile = () => {
   <div className="p-8 bg-white shadow-md rounded-lg max-w-md w-full">
     <h1 className="text-2xl font-bold text-center text-gray-800 mb-8">Profile</h1>
     <img
-      src={user.photoURL || "path_to_some_default_image"}
+      src={user.photoURL}
       alt="Profile Image"
       className="mx-auto h-32 w-32 rounded-full mb-4"
     />
