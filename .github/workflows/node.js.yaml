@@ -33,4 +33,4 @@ jobs:
         tag_name: ${{ steps.changelog.outputs.version }}
 
     - name: Pull changes
-      run: git pull origin main
+      run: git pull
