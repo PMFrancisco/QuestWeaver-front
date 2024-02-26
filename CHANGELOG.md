@@ -1,3 +1,12 @@
+# [0.6.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.5.1...v0.6.0) (2024-02-26)
+
+
+### Features
+
+* added profile from DB instead of firebase ([0dc8804](https://github.com/PMFrancisco/QuestWeaver-front/commit/0dc8804f1e9b874871aaa516d027f389c84a0026))
+
+
+
 ## [0.5.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.5.0...v0.5.1) (2024-02-25)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * modified github actions and index.html ([fa5e28c](https://github.com/PMFrancisco/QuestWeaver-front/commit/fa5e28cdba14e5b88c82066c9333112f20b93cd2))
-
-
-
-# [0.3.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.2.1...v0.3.0) (2024-02-24)
-
-
-### Features
-
-* add user to my DB ([39af96e](https://github.com/PMFrancisco/QuestWeaver-front/commit/39af96e6251b8dfb580907bd9cd25ed626bc8560))
 
 
 
