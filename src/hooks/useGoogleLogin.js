@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../config/firebase';
-import { createUser } from '../service/user';
+import { createProfile } from '../service/profile';
 
 export const useGoogleLogin = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const useGoogleLogin = () => {
         profileImage: user.photoURL,
       };
 
-      await createUser(profileInfo);
+      await createProfile(profileInfo);
       navigate("/");
     } catch (error) {
       console.error("Error logging in with Google:", error);

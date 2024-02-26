@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { Input } from "@nextui-org/input";
-import { createUser } from "../service/user";
+import { createProfile } from "../service/profile";
 import { Button } from "@nextui-org/button";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
 
@@ -30,7 +30,7 @@ export default function SignUp() {
       );
       const user = userCredential.user;
 
-      await createUser({
+      await createProfile({
         firebaseUserID: user.uid,
         email: user.email,
         firstName,
