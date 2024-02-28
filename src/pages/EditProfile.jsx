@@ -48,6 +48,28 @@ export const EditProfile = () => {
         </h2>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <Controller
+            name="displayName"
+            control={control}
+            rules={{ required: "This field is required" }}
+            render={({ field: { onChange } }) => (
+              <Input
+                onChange={onChange}
+                label="Display Name"
+                labelPlacement="inside"
+                variant="faded"
+                placeholder={profileData.displayName}
+                isInvalid={!!errors.displayName}
+                color={errors.displayName ? "danger" : "default"}
+                errorMessage={errors.displayName && errors.displayName.message}
+                classNames={{
+                  label: "text-sm font-medium text-black",
+                  inputWrapper: ["shadow-lg", "border-gray-300"],
+                }}
+              />
+            )}
+          />
+          
+          <Controller
             name="firstName"
             control={control}
             rules={{ required: "This field is required" }}
@@ -83,28 +105,6 @@ export const EditProfile = () => {
                 isInvalid={!!errors.lastName}
                 color={errors.lastName ? "danger" : "default"}
                 errorMessage={errors.lastName && errors.lastName.message}
-                classNames={{
-                  label: "text-sm font-medium text-black",
-                  inputWrapper: ["shadow-lg", "border-gray-300"],
-                }}
-              />
-            )}
-          />
-
-          <Controller
-            name="displayName"
-            control={control}
-            rules={{ required: "This field is required" }}
-            render={({ field: { onChange } }) => (
-              <Input
-                onChange={onChange}
-                label="Display Name"
-                labelPlacement="inside"
-                variant="faded"
-                placeholder={profileData.displayName}
-                isInvalid={!!errors.displayName}
-                color={errors.displayName ? "danger" : "default"}
-                errorMessage={errors.displayName && errors.displayName.message}
                 classNames={{
                   label: "text-sm font-medium text-black",
                   inputWrapper: ["shadow-lg", "border-gray-300"],

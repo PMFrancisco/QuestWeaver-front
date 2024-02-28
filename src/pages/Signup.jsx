@@ -33,8 +33,7 @@ export default function SignUp() {
         email: user.email,
         firstName,
         lastName,
-        displayName: displayName || `${firstName} ${lastName}`,
-        profileImage: "",
+        displayName,
       });
 
       return user;
@@ -58,6 +57,27 @@ export default function SignUp() {
           Sign Up
         </h2>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+
+        <Controller
+            name="displayName"
+            control={control}
+            rules={{ required: "This field is required" }}
+            render={({ field: { onChange } }) => (
+              <Input
+                onChange={onChange}
+                label="Username"
+                labelPlacement="inside"
+                variant="faded"
+                isInvalid={!!errors.displayName}
+                color={errors.displayName ? "danger" : "default"}
+                errorMessage={errors.displayName && errors.displayName.message}
+                classNames={{
+                  label: "text-sm font-medium text-black",
+                  inputWrapper: ["shadow-lg", "border-gray-300"],
+                }}
+              />
+            )}
+          />
           <Controller
             name="firstName"
             control={control}

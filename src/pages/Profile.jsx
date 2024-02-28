@@ -24,8 +24,7 @@ export const Profile = () => {
         </h1>
         <img
           src={
-            profileData.profileImage ||
-            "https://res.cloudinary.com/du8nkdwcp/image/upload/v1703686205/DALL_E_2023-12-27_15.08.43_-_A_less_cartoonish_and_more_artistically_drawn_medieval_potato_character._This_potato_has_a_slightly_more_realistic_appearance_with_subtle_cartoon_feat_ho7wtk.png"
+            profileData.profileImage
           }
           alt="Profile Image"
           className="mx-auto h-32 w-32 rounded-full mb-4"
