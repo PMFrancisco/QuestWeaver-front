@@ -4,6 +4,7 @@ import { getUserProfile } from "../service/profile";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthProvider";
 import { Button } from "@nextui-org/button";
+import { Image } from "@nextui-org/image";
 
 export const Profile = () => {
   const { currentUser } = useAuth();
@@ -22,13 +23,15 @@ export const Profile = () => {
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-8">
           Profile
         </h1>
-        <img
-          src={
-            profileData.profileImage
-          }
+        <div className="mb-4 justify-center flex">
+        <Image
+          src={profileData.profileImage}
           alt="Profile Image"
-          className="mx-auto h-32 w-32 rounded-full mb-4"
+          radius="full"
+          width={300}
+          height={300}
         />
+        </div>
         <p className="text-center text-sm font-medium text-gray-700">
           Username: {profileData.displayName}
         </p>

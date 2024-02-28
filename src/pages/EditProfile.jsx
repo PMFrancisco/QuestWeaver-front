@@ -6,6 +6,7 @@ import { Input } from "@nextui-org/input";
 import { useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import { Button } from "@nextui-org/button";
+import { Image } from "@nextui-org/image";
 
 export const EditProfile = () => {
   const navigate = useNavigate();
@@ -46,6 +47,15 @@ export const EditProfile = () => {
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
           Edit Profile
         </h2>
+        <div className="mb-4 justify-center flex">
+        <Image
+          src={profileData.profileImage}
+          alt="Profile Image"
+          radius="full"
+          width={300}
+          height={300}
+        />
+        </div>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="displayName"
@@ -54,7 +64,7 @@ export const EditProfile = () => {
             render={({ field: { onChange } }) => (
               <Input
                 onChange={onChange}
-                label="Display Name"
+                label="Username"
                 labelPlacement="inside"
                 variant="faded"
                 placeholder={profileData.displayName}
@@ -68,7 +78,7 @@ export const EditProfile = () => {
               />
             )}
           />
-          
+
           <Controller
             name="firstName"
             control={control}
