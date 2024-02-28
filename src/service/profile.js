@@ -13,7 +13,7 @@ export const getUserProfile = async (userId) => {
   return data;
 };
 
-export const editUserProfile = async (userId) => {
-  const { data } = await api.put(`/edit/${userId}`);
+export const editUserProfile = async (userId, profileData) => {
+  const { data } = await api.put(`/profile/edit/${userId}`, profileData);
   return data;
 };

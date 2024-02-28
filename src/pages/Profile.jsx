@@ -3,6 +3,7 @@ import { handleSignOut } from "../service/authService";
 import { getUserProfile } from "../service/profile";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthProvider";
+import { Button } from "@nextui-org/button";
 
 export const Profile = () => {
   const { currentUser } = useAuth();
@@ -22,7 +23,10 @@ export const Profile = () => {
           Profile
         </h1>
         <img
-          src={profileData.profileImage}
+          src={
+            profileData.profileImage ||
+            "https://res.cloudinary.com/du8nkdwcp/image/upload/v1703686205/DALL_E_2023-12-27_15.08.43_-_A_less_cartoonish_and_more_artistically_drawn_medieval_potato_character._This_potato_has_a_slightly_more_realistic_appearance_with_subtle_cartoon_feat_ho7wtk.png"
+          }
           alt="Profile Image"
           className="mx-auto h-32 w-32 rounded-full mb-4"
         />
@@ -30,18 +34,29 @@ export const Profile = () => {
           Username: {profileData.displayName}
         </p>
         <div className="space-y-6 mt-8">
-          <button
-            className="w-full inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          <a href="/profile/edit">
+            <Button
+              value="Edit Profile"
+              isDisabled={isLoading}
+              fullWidth
+              color="primary"
+              size="lg"
+              className="shadow-lg"
+            >
+              Edit Profile
+            </Button>
+          </a>
+          <Button
+            value="Sign out"
+            isDisabled={isLoading}
+            fullWidth
+            color="secondary"
+            size="lg"
+            className="shadow-lg"
             onClick={() => handleSignOut()}
           >
             Sign Out
-          </button>
-          <a
-            href="/profile/edit"
-            className="block text-center w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-green-600 bg-green-50 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-          >
-            Edit Profile
-          </a>
+          </Button>
         </div>
       </div>
     </div>
