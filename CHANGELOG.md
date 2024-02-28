@@ -1,3 +1,18 @@
+# [0.7.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.6.0...v0.7.0) (2024-02-28)
+
+
+### Bug Fixes
+
+* added image from NUI ([00f7f21](https://github.com/PMFrancisco/QuestWeaver-front/commit/00f7f21cbf66bec72760ccbbea83226f97ea8661))
+* signup username added ([a505776](https://github.com/PMFrancisco/QuestWeaver-front/commit/a5057764044106f5c5b483d67ef0b1783675e457))
+
+
+### Features
+
+* added edition of profile ([05c6cd3](https://github.com/PMFrancisco/QuestWeaver-front/commit/05c6cd36989b293db3646500ac8b748e7570fc17))
+
+
+
 # [0.6.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.5.1...v0.6.0) (2024-02-26)
 
 
@@ -31,15 +46,6 @@
 ### Features
 
 * nui set and navbar reworked ([bb4a3ae](https://github.com/PMFrancisco/QuestWeaver-front/commit/bb4a3ae290760bc8766402858485d8407e303935))
-
-
-
-## [0.3.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.3.0...v0.3.1) (2024-02-25)
-
-
-### Bug Fixes
-
-* modified github actions and index.html ([fa5e28c](https://github.com/PMFrancisco/QuestWeaver-front/commit/fa5e28cdba14e5b88c82066c9333112f20b93cd2))
 
 
 
