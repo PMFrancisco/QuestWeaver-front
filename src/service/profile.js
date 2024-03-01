@@ -17,3 +17,12 @@ export const editUserProfile = async (userId, profileData) => {
   const { data } = await api.put(`/profile/edit/${userId}`, profileData);
   return data;
 };
+
+export const editProfileImage = async (userId, profileData) => {
+  const { data } = await api.post(`/profile/updateProfilePicture/${userId}`, profileData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+  return data;
+};

@@ -17,7 +17,10 @@ export const NavBar = () => {
 
   return (
     <>
-      <Navbar position="static" className="flex bg-blue-600 shadow-lg text-white">
+      <Navbar
+        position="static"
+        className="flex bg-blue-600 shadow-lg text-white"
+      >
         <NavbarBrand>
           <Image
             src="https://res.cloudinary.com/du8nkdwcp/image/upload/c_thumb,w_200,g_face/v1708712757/logo_transparent_background_cpktqd.png"
@@ -27,6 +30,11 @@ export const NavBar = () => {
           />
           <Link to="/">Quest Weaver</Link>
         </NavbarBrand>
+        <NavbarContent>
+          <NavbarItem>
+            <Link to="/games">Games</Link>
+          </NavbarItem>
+        </NavbarContent>
         <NavbarContent justify="flex-end">
           {auth.currentUser ? (
             <>

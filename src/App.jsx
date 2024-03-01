@@ -7,6 +7,8 @@ import { HomePage } from "./pages/HomePage";
 import { NavBar } from "./components/NavBar";
 import { Profile } from "./pages/Profile";
 import { EditProfile } from "./pages/EditProfile";
+import { Games } from "./pages/Games";
+import { CreateGame } from "./pages/CreateGame";
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/edit" element={<EditProfile />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/creategame" element={<CreateGame />} />
+
           </Route>
           <Route element={<AlreadyAuth />}>
             <Route path="/signup" element={<SignUp />} />

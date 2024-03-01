@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { editUserProfile, getUserProfile } from "../service/profile";
+import {
+  editProfileImage,
+  editUserProfile,
+  getUserProfile,
+} from "../service/profile";
 import { Input } from "@nextui-org/input";
 import { useNavigate } from "react-router-dom";
 import { useForm, Controller } from "react-hook-form";
 import { Button } from "@nextui-org/button";
 import { Image } from "@nextui-org/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 export const EditProfile = () => {
   const navigate = useNavigate();
@@ -16,13 +22,15 @@ export const EditProfile = () => {
     queryFn: () => getUserProfile(currentUser.uid),
   });
 
+  const [isEditingImage, setIsEditingImage] = useState(false);
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const updateProfile = useMutation({
+  const {mutate: updateProfile, isPending: isPendingProfile} = useMutation({
     mutationFn: (userData) => editUserProfile(currentUser.uid, userData),
     onSuccess: () => {
       console.log("Profile updated successfully");
@@ -33,9 +41,28 @@ export const EditProfile = () => {
     },
   });
 
+  const {mutate: updateProfileImage, isPending: isPendingImage} = useMutation({
+    mutationFn: (formData) => editProfileImage(currentUser.uid, formData),
+    onSuccess: () => {
+      console.log("Profile image updated successfully");
+      navigate("/profile");
+    },
+    onError: (error) => {
+      console.error("Failed to update profile image:", error);
+    },
+  });
+
   const onSubmit = (data) => {
-    updateProfile.mutate(data);
+    if (isEditingImage) {
+      const formData = new FormData();
+      formData.append("profileImage", data.profileImage[0]);
+      updateProfileImage(formData);
+    } else {
+      updateProfile(data);
+    }
   };
+
+  const toggleForm = () => setIsEditingImage(!isEditingImage);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -45,96 +72,136 @@ export const EditProfile = () => {
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="p-8 bg-white shadow-md rounded-lg max-w-md w-full">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
-          Edit Profile
+          {isEditingImage ? "Edit Profile Image" : "Edit Profile"}
         </h2>
-        <div className="mb-4 justify-center flex">
-        <Image
-          src={profileData.profileImage}
-          alt="Profile Image"
-          radius="full"
-          width={300}
-          height={300}
-        />
+        <div className="relative mb-4 justify-center flex">
+          <Image
+            src={profileData.profileImage}
+            alt="Profile Image"
+            radius="full"
+            className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72"
+          />
+          <FontAwesomeIcon
+            icon={faPencil}
+            className="absolute bottom-100 right-10 text-gray-600 cursor-pointer fa-xl"
+            onClick={toggleForm}
+          />
         </div>
-        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          <Controller
-            name="displayName"
-            control={control}
-            rules={{ required: "This field is required" }}
-            render={({ field: { onChange } }) => (
-              <Input
-                onChange={onChange}
-                label="Username"
-                labelPlacement="inside"
-                variant="faded"
-                placeholder={profileData.displayName}
-                isInvalid={!!errors.displayName}
-                color={errors.displayName ? "danger" : "default"}
-                errorMessage={errors.displayName && errors.displayName.message}
-                classNames={{
-                  label: "text-sm font-medium text-black",
-                  inputWrapper: ["shadow-lg", "border-gray-300"],
-                }}
-              />
-            )}
-          />
 
-          <Controller
-            name="firstName"
-            control={control}
-            rules={{ required: "This field is required" }}
-            render={({ field: { onChange } }) => (
-              <Input
-                onChange={onChange}
-                label="First Name"
-                labelPlacement="inside"
-                variant="faded"
-                placeholder={profileData.firstName}
-                isInvalid={!!errors.firstName}
-                color={errors.firstName ? "danger" : "default"}
-                errorMessage={errors.firstName && errors.firstName.message}
-                classNames={{
-                  label: "text-sm font-medium text-black",
-                  inputWrapper: ["shadow-lg", "border-gray-300"],
-                }}
-              />
-            )}
-          />
+        {isEditingImage ? (
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              name="profileImage"
+              control={control}
+              rules={{ required: "This field is required" }}
+              render={({ field: { onChange, value, ref } }) => (
+                <>
+                  <label htmlFor="profileImage">Select Profile Image:</label>
+                  <input
+                    type="file"
+                    id="profileImage"
+                    name="profileImage"
+                    ref={ref}
+                    onChange={(e) => {
+                      onChange(e.target.files);
+                    }}
+                  />
+                </>
+              )}
+            />
 
-          <Controller
-            name="lastName"
-            control={control}
-            rules={{ required: "This field is required" }}
-            render={({ field: { onChange } }) => (
-              <Input
-                label="Last Name"
-                onChange={onChange}
-                labelPlacement="inside"
-                variant="faded"
-                placeholder={profileData.lastName}
-                isInvalid={!!errors.lastName}
-                color={errors.lastName ? "danger" : "default"}
-                errorMessage={errors.lastName && errors.lastName.message}
-                classNames={{
-                  label: "text-sm font-medium text-black",
-                  inputWrapper: ["shadow-lg", "border-gray-300"],
-                }}
-              />
-            )}
-          />
+            <Button
+              type="submit"
+              value="uploadImage"
+              isLoading={isPendingImage}
+              fullWidth
+              color="primary"
+              size="lg"
+              className="shadow-lg"
+            >
+              Upload Image
+            </Button>
+          </form>
+        ) : (
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            <Controller
+              name="displayName"
+              control={control}
+              render={({ field: { onChange } }) => (
+                <Input
+                  onChange={onChange}
+                  label="Username"
+                  labelPlacement="inside"
+                  variant="faded"
+                  placeholder={profileData.displayName}
+                  isInvalid={!!errors.displayName}
+                  color={errors.displayName ? "danger" : "default"}
+                  errorMessage={
+                    errors.displayName && errors.displayName.message
+                  }
+                  classNames={{
+                    label: "text-sm font-medium text-black",
+                    inputWrapper: ["shadow-lg", "border-gray-300"],
+                  }}
+                />
+              )}
+            />
 
-          <Button
-            type="submit"
-            value="Login"
-            isDisabled={isLoading}
-            fullWidth
-            color="primary"
-            size="lg"
-            className="shadow-lg"
-          >
-            Update profile
-          </Button>
-        </form>
+            <Controller
+              name="firstName"
+              control={control}
+              render={({ field: { onChange } }) => (
+                <Input
+                  onChange={onChange}
+                  label="First Name"
+                  labelPlacement="inside"
+                  variant="faded"
+                  placeholder={profileData.firstName}
+                  isInvalid={!!errors.firstName}
+                  color={errors.firstName ? "danger" : "default"}
+                  errorMessage={errors.firstName && errors.firstName.message}
+                  classNames={{
+                    label: "text-sm font-medium text-black",
+                    inputWrapper: ["shadow-lg", "border-gray-300"],
+                  }}
+                />
+              )}
+            />
+
+            <Controller
+              name="lastName"
+              control={control}
+              render={({ field: { onChange } }) => (
+                <Input
+                  label="Last Name"
+                  onChange={onChange}
+                  labelPlacement="inside"
+                  variant="faded"
+                  placeholder={profileData.lastName}
+                  isInvalid={!!errors.lastName}
+                  color={errors.lastName ? "danger" : "default"}
+                  errorMessage={errors.lastName && errors.lastName.message}
+                  classNames={{
+                    label: "text-sm font-medium text-black",
+                    inputWrapper: ["shadow-lg", "border-gray-300"],
+                  }}
+                />
+              )}
+            />
+
+            <Button
+              type="submit"
+              value="updateProfile"
+              isDisabled={isPendingProfile}
+              fullWidth
+              color="primary"
+              size="lg"
+              className="shadow-lg"
+            >
+              Update profile
+            </Button>
+          </form>
+        )}
       </div>
     </div>
   );
