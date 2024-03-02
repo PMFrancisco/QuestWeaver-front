@@ -5,8 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { createProfile } from "../service/profile";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
+import { Button, Input } from "@nextui-org/react";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ export default function SignUp() {
     formState: { errors },
   } = useForm();
 
-  const { mutate: signupMutation, isLoading } = useMutation({
+  const { mutate: signupMutation, isPending } = useMutation({
     mutationKey: "signup",
     mutationFn: async (formData) => {
       const { email, password, firstName, lastName, displayName } = formData;
@@ -176,7 +175,7 @@ export default function SignUp() {
           <Button
             type="submit"
             value="Login"
-            isDisabled={isLoading}
+            isLoading={isPending}
             fullWidth
             color="primary"
             size="lg"
@@ -187,7 +186,7 @@ export default function SignUp() {
         </form>
         <Button
           onClick={googleLogin}
-          isDisabled={isLoading}
+          isLoading={isPending}
           fullWidth
           color="secondary"
           size="lg"

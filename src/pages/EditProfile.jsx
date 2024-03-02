@@ -192,7 +192,7 @@ export const EditProfile = () => {
             <Button
               type="submit"
               value="updateProfile"
-              isDisabled={isPendingProfile}
+              isLoading={isPendingProfile}
               fullWidth
               color="primary"
               size="lg"

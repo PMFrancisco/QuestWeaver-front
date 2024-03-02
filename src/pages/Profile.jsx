@@ -3,17 +3,16 @@ import { handleSignOut } from "../service/authService";
 import { getUserProfile } from "../service/profile";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthProvider";
-import { Button } from "@nextui-org/button";
-import { Image } from "@nextui-org/image";
+import { Button, Image } from "@nextui-org/react";
 
 export const Profile = () => {
   const { currentUser } = useAuth();
-  const { data: profileData, isLoading } = useQuery({
+  const { data: profileData, isPending } = useQuery({
     queryKey: ["profile", currentUser?.uid],
     queryFn: () => getUserProfile(currentUser?.uid),
   });
 
-  if (isLoading) {
+  if (isPending) {
     return <p>Loading...</p>;
   }
 
@@ -39,7 +38,7 @@ export const Profile = () => {
           <a href="/profile/edit">
             <Button
               value="Edit Profile"
-              isDisabled={isLoading}
+              isDisabled={isPending}
               fullWidth
               color="primary"
               size="lg"
@@ -50,7 +49,7 @@ export const Profile = () => {
           </a>
           <Button
             value="Sign out"
-            isDisabled={isLoading}
+            isDisabled={isPending}
             fullWidth
             color="secondary"
             size="lg"

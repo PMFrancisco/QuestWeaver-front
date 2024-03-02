@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import SignUp from "./pages/Signup";
 import Login from "./pages/Login";
 import { RequireAuth, AlreadyAuth } from "./components/ProtectedRoute";
-import { NextUIProvider } from "@nextui-org/system";
+import { NextUIProvider } from "@nextui-org/react";
 import { HomePage } from "./pages/HomePage";
 import { NavBar } from "./components/NavBar";
 import { Profile } from "./pages/Profile";
@@ -20,7 +20,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/edit" element={<EditProfile />} />
             <Route path="/games" element={<Games />} />
-            <Route path="/creategame" element={<CreateGame />} />
+            <Route path="/newgame" element={<CreateGame />} />
 
           </Route>
           <Route element={<AlreadyAuth />}>

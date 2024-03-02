@@ -4,8 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
+import { Input, Button } from "@nextui-org/react";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const { mutate: loginMutate, isLoading } = useMutation({
+  const { mutate: loginMutate, isPending } = useMutation({
     mutationKey: "login",
     mutationFn: async ({ email, password }) => {
       await signInWithEmailAndPassword(auth, email, password);
@@ -79,7 +78,7 @@ export default function Login() {
           <Button
             type="submit"
             value="Login"
-            disabled={isLoading}
+            isLoading={isPending}
             fullWidth
             color="primary"
             size="lg"
@@ -90,7 +89,7 @@ export default function Login() {
         </form>
         <Button
           onClick={googleLogin}
-          disabled={isLoading}
+          disabled={isPending}
           fullWidth
           color="secondary"
           size="lg"

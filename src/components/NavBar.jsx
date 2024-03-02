@@ -8,7 +8,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Image } from "@nextui-org/image";
+import { Image } from "@nextui-org/react";
 import { useAuth } from "../context/AuthProvider";
 import { handleSignOut } from "../service/authService";
 

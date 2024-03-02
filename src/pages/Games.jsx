@@ -5,12 +5,12 @@ import { useQuery } from "@tanstack/react-query";
 
 export const Games = () => {
   const { currentUser } = useAuth();
-  const { data: gamesData, isLoading } = useQuery({
+  const { data: gamesData, isPending } = useQuery({
     queryKey: ["games", currentUser?.uid],
     queryFn: () => getGames(currentUser?.uid),
   });
 
-  if (isLoading) {
+  if (isPending) {
     return <p>Loading...</p>;
   }
   return (

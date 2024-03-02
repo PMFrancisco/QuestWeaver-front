@@ -3,9 +3,8 @@ import { Controller, useForm } from "react-hook-form";
 import { createGame } from "../service/games";
 import { useMutation } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthProvider";
-import { Input } from "@nextui-org/input";
-import { Button } from "@nextui-org/button";
 import { useNavigate } from "react-router-dom";
+import { Button, Input } from "@nextui-org/react";
 
 export const CreateGame = () => {
   const navigate = useNavigate();
@@ -18,7 +17,7 @@ export const CreateGame = () => {
     formState: { errors },
   } = useForm();
 
-  const { mutate: createGameMutation, isLoading } = useMutation({
+  const { mutate: createGameMutation, isPending } = useMutation({
     mutationKey: "createGame",
     mutationFn: async (formData) => {
       const id = currentUser.uid;
@@ -88,7 +87,7 @@ export const CreateGame = () => {
           <Button
             type="submit"
             value="createGame"
-            isDisabled={isLoading}
+            isLoading={isPending}
             fullWidth
             color="primary"
             size="lg"
