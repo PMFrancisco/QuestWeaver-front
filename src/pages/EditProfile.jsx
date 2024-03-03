@@ -90,25 +90,26 @@ export const EditProfile = () => {
 
         {isEditingImage ? (
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-            <Controller
-              name="profileImage"
-              control={control}
-              rules={{ required: "This field is required" }}
-              render={({ field: { onChange, value, ref } }) => (
-                <>
-                  <label htmlFor="profileImage">Select Profile Image:</label>
-                  <input
-                    type="file"
-                    id="profileImage"
-                    name="profileImage"
-                    ref={ref}
-                    onChange={(e) => {
-                      onChange(e.target.files);
-                    }}
-                  />
-                </>
-              )}
-            />
+<Controller
+  name="profileImage"
+  control={control}
+  rules={{ required: "This field is required" }}
+  render={({ field: { onChange, value, ref } }) => (
+    <div className="fileInputContainer">
+      <label className="fileInputLabel">
+        Select Profile Image:
+      </label>
+      <input
+        type="file"
+        id="profileImage"
+        name="profileImage"
+        ref={ref}
+        onChange={(e) => onChange(e.target.files)}
+        className="w-full h-full bg-transparent text-sm font-normal "
+      />
+    </div>
+  )}
+/>
 
             <Button
               type="submit"

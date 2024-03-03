@@ -15,4 +15,10 @@ body {
 
 
 @layer components {
+    .fileInputContainer {
+        @apply relative w-full inline-flex flex-col items-start justify-center gap-0 py-2 px-3 min-h-[3.5rem] h-14 bg-gray-100 border border-gray-300 rounded-xl shadow-lg
+    }
+    .fileInputLabel {
+        @apply absolute top-0 left-3 -translate-y-1/2 transform scale-85 bg-gray-100 px-1 text-sm font-medium text-black pointer-events-none
+    }
 }

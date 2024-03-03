@@ -4,7 +4,7 @@ import { createGame } from "../service/games";
 import { useMutation } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { Button, Input } from "@nextui-org/react";
+import { Button, Input, Textarea } from "@nextui-org/react";
 
 export const CreateGame = () => {
   const navigate = useNavigate();
@@ -69,7 +69,8 @@ export const CreateGame = () => {
             control={control}
             rules={{ required: "This field is required" }}
             render={({ field: { onChange } }) => (
-              <Input
+              <Textarea
+              minRows={6}
                 onChange={onChange}
                 label="Game description"
                 labelPlacement="inside"

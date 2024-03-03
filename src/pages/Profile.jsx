@@ -23,30 +23,30 @@ export const Profile = () => {
           Profile
         </h1>
         <div className="mb-4 justify-center flex">
-        <Image
-          src={profileData.profileImage}
-          alt="Profile Image"
-          radius="full"
-          width={300}
-          height={300}
-        />
+          <Image
+            src={profileData.profileImage}
+            alt="Profile Image"
+            radius="full"
+            width={300}
+            height={300}
+          />
         </div>
         <p className="text-center text-sm font-medium text-gray-700">
           Username: {profileData.displayName}
         </p>
         <div className="space-y-6 mt-8">
-          <a href="/profile/edit">
-            <Button
-              value="Edit Profile"
-              isDisabled={isPending}
-              fullWidth
-              color="primary"
-              size="lg"
-              className="shadow-lg"
-            >
-              Edit Profile
-            </Button>
-          </a>
+          <Button
+            as={"a"}
+            href="/profile/edit"
+            value="Edit Profile"
+            isDisabled={isPending}
+            fullWidth
+            color="primary"
+            size="lg"
+            className="shadow-lg"
+          >
+            Edit Profile
+          </Button>
           <Button
             value="Sign out"
             isDisabled={isPending}
@@ -56,7 +56,7 @@ export const Profile = () => {
             className="shadow-lg"
             onClick={() => handleSignOut()}
           >
-            Sign Out
+            Logout
           </Button>
         </div>
       </div>

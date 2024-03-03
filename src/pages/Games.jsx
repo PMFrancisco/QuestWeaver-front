@@ -17,16 +17,30 @@ export const Games = () => {
   const showMoreGames = () => {
     setDisplayCount((prevCount) => prevCount + 4);
   };
-  
+
   if (isPending) {
     return <p>Loading...</p>;
   }
-  
-  const sortedGamesData = gamesData.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  const sortedGamesData = gamesData.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
 
   return (
     <div className="container mx-auto my-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <h1 className="text-2xl font-bold mb-4 text-center">Games</h1>
+      <div className="flex justify-center mb-4">
+        <Button
+          as={"a"}
+          href="/newgame"
+          color="primary"
+          size="lg"
+          className="w-full shadow-lg md:w-2/3 lg:w-1/2"
+        >
+          New Game
+        </Button>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
         {sortedGamesData.slice(0, displayCount).map((game) => (
           <div
             key={game.id}
@@ -58,7 +72,12 @@ export const Games = () => {
       </div>
       {displayCount < sortedGamesData.length && (
         <div className="text-center my-4">
-          <Button onClick={showMoreGames} variant="light" color="primary" size="lg">
+          <Button
+            onClick={showMoreGames}
+            variant="light"
+            color="primary"
+            size="lg"
+          >
             Show More
           </Button>
         </div>
