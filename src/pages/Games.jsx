@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { getGames } from "../service/games";
+import { getGames, joinGame } from "../service/games";
 import { useAuth } from "../context/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Image } from "@nextui-org/react";
 import { formatDate } from "../utils/formatDate";
 
@@ -17,6 +17,23 @@ export const Games = () => {
   const showMoreGames = () => {
     setDisplayCount((prevCount) => prevCount + 4);
   };
+
+  const { mutate: joinGameMutation, isPending: isPendingJoin } = useMutation({
+    mutationKey: "joinGame",
+    mutationFn: (gameId) => joinGame(currentUser.uid, gameId),
+    onSuccess: () => {
+      console.log("Joined game successfully");
+    },
+    onError: (error) => {
+      console.error("Failed to join game:", error);
+    },
+  });
+
+  const joinGameHandler = (gameId) => {
+    joinGameMutation(gameId);
+  }
+
+  
 
   if (isPending) {
     return <p>Loading...</p>;
@@ -64,7 +81,14 @@ export const Games = () => {
             <p>{game.description}</p>
             <p>Created by: {game.creator.displayName}</p>
             <p>Created: {formatDate(game.createdAt)}</p>
-            <Button fullWidth color="primary" size="lg" className="shadow-lg">
+            <Button
+              onClick={() => joinGameHandler(game.id)}
+              isPending={isPendingJoin}
+              fullWidth
+              color="primary"
+              size="lg"
+              className="shadow-lg"
+            >
               Join Game
             </Button>
           </div>

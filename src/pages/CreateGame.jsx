@@ -21,8 +21,13 @@ export const CreateGame = () => {
     mutationKey: "createGame",
     mutationFn: async (formData) => {
       const id = currentUser.uid;
-      const { name, description } = formData;
-      const { data } = await createGame(id, { name, description });
+      const formDataToSend = new FormData();
+      if (formData.profileImage && formData.profileImage.length > 0) {
+        formDataToSend.append("profileImage", formData.profileImage[0]);
+      }
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("description", formData.description);
+      const { data } = await createGame(id, formDataToSend);
       return data;
     },
 
@@ -45,6 +50,23 @@ export const CreateGame = () => {
         </h2>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <Controller
+            name="profileImage"
+            control={control}
+            render={({ field: { onChange, value, ref } }) => (
+              <div className="fileInputContainer">
+                <label className="fileInputLabel">Select Game Image:</label>
+                <input
+                  type="file"
+                  id="profileImage"
+                  name="profileImage"
+                  ref={ref}
+                  onChange={(e) => onChange(e.target.files)}
+                  className="w-full h-full bg-transparent text-sm font-normal "
+                />
+              </div>
+            )}
+          />
+          <Controller
             name="name"
             control={control}
             rules={{ required: "This field is required" }}
@@ -63,14 +85,14 @@ export const CreateGame = () => {
                 }}
               />
             )}
-          />{" "}
+          />
           <Controller
             name="description"
             control={control}
             rules={{ required: "This field is required" }}
             render={({ field: { onChange } }) => (
               <Textarea
-              minRows={6}
+                minRows={6}
                 onChange={onChange}
                 label="Game description"
                 labelPlacement="inside"

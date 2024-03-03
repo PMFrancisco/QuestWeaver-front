@@ -30,7 +30,7 @@ export const EditProfile = () => {
     formState: { errors },
   } = useForm();
 
-  const {mutate: updateProfile, isPending: isPendingProfile} = useMutation({
+  const { mutate: updateProfile, isPending: isPendingProfile } = useMutation({
     mutationFn: (userData) => editUserProfile(currentUser.uid, userData),
     onSuccess: () => {
       console.log("Profile updated successfully");
@@ -41,16 +41,18 @@ export const EditProfile = () => {
     },
   });
 
-  const {mutate: updateProfileImage, isPending: isPendingImage} = useMutation({
-    mutationFn: (formData) => editProfileImage(currentUser.uid, formData),
-    onSuccess: () => {
-      console.log("Profile image updated successfully");
-      navigate("/profile");
-    },
-    onError: (error) => {
-      console.error("Failed to update profile image:", error);
-    },
-  });
+  const { mutate: updateProfileImage, isPending: isPendingImage } = useMutation(
+    {
+      mutationFn: (formData) => editProfileImage(currentUser.uid, formData),
+      onSuccess: () => {
+        console.log("Profile image updated successfully");
+        navigate("/profile");
+      },
+      onError: (error) => {
+        console.error("Failed to update profile image:", error);
+      },
+    }
+  );
 
   const onSubmit = (data) => {
     if (isEditingImage) {
@@ -90,26 +92,26 @@ export const EditProfile = () => {
 
         {isEditingImage ? (
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-<Controller
-  name="profileImage"
-  control={control}
-  rules={{ required: "This field is required" }}
-  render={({ field: { onChange, value, ref } }) => (
-    <div className="fileInputContainer">
-      <label className="fileInputLabel">
-        Select Profile Image:
-      </label>
-      <input
-        type="file"
-        id="profileImage"
-        name="profileImage"
-        ref={ref}
-        onChange={(e) => onChange(e.target.files)}
-        className="w-full h-full bg-transparent text-sm font-normal "
-      />
-    </div>
-  )}
-/>
+            <Controller
+              name="profileImage"
+              control={control}
+              rules={{ required: "This field is required" }}
+              render={({ field: { onChange, value, ref } }) => (
+                <div className="fileInputContainer">
+                  <label className="fileInputLabel">
+                    Select Profile Image:
+                  </label>
+                  <input
+                    type="file"
+                    id="profileImage"
+                    name="profileImage"
+                    ref={ref}
+                    onChange={(e) => onChange(e.target.files)}
+                    className="w-full h-full bg-transparent text-sm font-normal "
+                  />
+                </div>
+              )}
+            />
 
             <Button
               type="submit"
