@@ -34,11 +34,14 @@ export const Game = () => {
 
   return (
     <>
-      <div className="m-4">
+    <div className="flex justify-center items-center align-center">
+      <div className="p-4 mt-4 md:p-8 bg-white shadow-md rounded-lg max-w-7xl w-full">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-8">
           {gameData.name}
         </h1>
-        <Image src={gameData.gameImage} alt={`${gameData.name} image`} className="max-h-80 justify-self-center" />
+        <div className="flex justify-center">
+        <Image src={gameData.gameImage} alt={`${gameData.name} image`} className="max-h-96" />
+        </div>
         <div className="game-description">
           <p>{gameData.description}</p>
           <p>Created: {formatDate(gameData.createdAt)}</p>
@@ -61,7 +64,7 @@ export const Game = () => {
             <button type="submit">Maps</button>
           </form>
         </div>
-      </div>
+      
 
       <div>
         <h2>Players</h2>
@@ -104,6 +107,10 @@ export const Game = () => {
           </ul>
         </div>
       )}
+          </div>
+
+
+    </div>
     </>
   );
 };

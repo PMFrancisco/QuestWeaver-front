@@ -50,11 +50,11 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="p-8 bg-white shadow-md rounded-lg max-w-md w-full">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
+    <div className="flex justify-center items-center align-center">
+      <div className="p-4 mt-4 md:p-8 bg-white shadow-md rounded-lg max-w-7xl w-full">
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-8">
           Sign Up
-        </h2>
+        </h1>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
 
         <Controller

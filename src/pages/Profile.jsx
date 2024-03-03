@@ -17,8 +17,8 @@ export const Profile = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="p-8 bg-white shadow-md rounded-lg max-w-md w-full">
+    <div className="flex justify-center items-center align-center">
+      <div className="p-4 mt-4 md:p-8 bg-white shadow-md rounded-lg max-w-7xl w-full">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-8">
           Profile
         </h1>

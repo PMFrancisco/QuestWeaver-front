@@ -71,11 +71,11 @@ export const EditProfile = () => {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="p-8 bg-white shadow-md rounded-lg max-w-md w-full">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
+    <div className="flex justify-center items-center align-center">
+      <div className="p-4 mt-4 md:p-8 bg-white shadow-md rounded-lg max-w-7xl w-full">
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-8">
           {isEditingImage ? "Edit Profile Image" : "Edit Profile"}
-        </h2>
+        </h1>
         <div className="relative mb-4 justify-center flex">
           <Image
             src={profileData.profileImage}
