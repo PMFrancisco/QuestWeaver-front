@@ -1,6 +1,6 @@
 import api from "./api";
 
-export const getGames = async () => { 
+export const getAllGames = async () => { 
     const { data } = await api.get(`/games`);
     return data;
   };
@@ -16,5 +16,10 @@ export const getGames = async () => {
 
   export const joinGame = async (userId, gameId) => {
     const { data } = await api.post(`/games/joinGame/${userId}/${gameId}`);
+    return data;
+  }
+
+  export const getOneGame = async (gameId, userId) => {
+    const { data } = await api.get(`/games/${gameId}/${userId}`);
     return data;
   }

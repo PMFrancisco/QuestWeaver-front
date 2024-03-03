@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { getGames, joinGame } from "../service/games";
+import { getAllGames, joinGame } from "../service/games";
 import { useAuth } from "../context/AuthProvider";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Button, Image } from "@nextui-org/react";
 import { formatDate } from "../utils/formatDate";
+import { useJoinGameMutation } from "../hooks/useJoinGameMutation";
 
-export const Games = () => {
+export const GameList = () => {
   const { currentUser } = useAuth();
   const { data: gamesData, isPending } = useQuery({
     queryKey: ["games", currentUser?.uid],
-    queryFn: () => getGames(currentUser?.uid),
+    queryFn: () => getAllGames(currentUser?.uid),
   });
 
   const [displayCount, setDisplayCount] = useState(4);
@@ -18,22 +19,14 @@ export const Games = () => {
     setDisplayCount((prevCount) => prevCount + 4);
   };
 
-  const { mutate: joinGameMutation, isPending: isPendingJoin } = useMutation({
-    mutationKey: "joinGame",
-    mutationFn: (gameId) => joinGame(currentUser.uid, gameId),
-    onSuccess: () => {
-      console.log("Joined game successfully");
-    },
-    onError: (error) => {
-      console.error("Failed to join game:", error);
-    },
-  });
+  const {
+    joinGame: joinGameMutation,
+    isJoining: isPendingJoin,
+  } = useJoinGameMutation(currentUser?.uid);
 
   const joinGameHandler = (gameId) => {
     joinGameMutation(gameId);
-  }
-
-  
+  };
 
   if (isPending) {
     return <p>Loading...</p>;

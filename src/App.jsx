@@ -7,8 +7,9 @@ import { HomePage } from "./pages/HomePage";
 import { NavBar } from "./components/NavBar";
 import { Profile } from "./pages/Profile";
 import { EditProfile } from "./pages/EditProfile";
-import { Games } from "./pages/Games";
+import { GameList } from "./pages/GameList";
 import { CreateGame } from "./pages/CreateGame";
+import { Game } from "./pages/Game";
 
 function App() {
   return (
@@ -19,9 +20,9 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/edit" element={<EditProfile />} />
-            <Route path="/games" element={<Games />} />
+            <Route path="/games" element={<GameList />} />
             <Route path="/newgame" element={<CreateGame />} />
-
+            <Route path="/games/:gameId" element={<Game />} />
           </Route>
           <Route element={<AlreadyAuth />}>
             <Route path="/signup" element={<SignUp />} />
