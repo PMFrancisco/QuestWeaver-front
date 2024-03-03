@@ -5,10 +5,12 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
 import { Input, Button } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export default function Login() {
   const navigate = useNavigate();
-  const googleLogin = useGoogleLogin()
+  const googleLogin = useGoogleLogin();
   const {
     register,
     handleSubmit,
@@ -35,9 +37,7 @@ export default function Login() {
   return (
     <div className="flexCardContainer">
       <div className="cardInside">
-        <h1 className="cardHeader">
-          Login
-        </h1>
+        <h1 className="cardHeader">Login</h1>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <Input
@@ -95,6 +95,7 @@ export default function Login() {
           size="lg"
           className="shadow-lg mt-6"
         >
+          <FontAwesomeIcon icon={faGoogle} />
           Login with Google
         </Button>
       </div>

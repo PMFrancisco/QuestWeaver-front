@@ -42,7 +42,7 @@ export const Game = () => {
         <div className="flex justify-center">
         <Image src={gameData.gameImage} alt={`${gameData.name} image`} className="max-h-96" />
         </div>
-        <div className="game-description">
+        <div>
           <p>{gameData.description}</p>
           <p>Created: {formatDate(gameData.createdAt)}</p>
           {canJoin && (
@@ -52,7 +52,7 @@ export const Game = () => {
               fullWidth
               color="primary"
               size="lg"
-              className="shadow-lg"
+              className="shadow-lg "
             >
               Join Game
             </Button>

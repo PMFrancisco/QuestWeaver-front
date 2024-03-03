@@ -19,10 +19,8 @@ export const GameList = () => {
     setDisplayCount((prevCount) => prevCount + 4);
   };
 
-  const {
-    joinGame: joinGameMutation,
-    isJoining: isPendingJoin,
-  } = useJoinGameMutation(currentUser?.uid);
+  const { joinGame: joinGameMutation, isJoining: isPendingJoin } =
+    useJoinGameMutation(currentUser?.uid);
 
   const joinGameHandler = (gameId) => {
     joinGameMutation(gameId);
@@ -38,7 +36,9 @@ export const GameList = () => {
 
   return (
     <div className="container mx-auto my-4">
-      <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Games</h1>
+      <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">
+        Games
+      </h1>
       <div className="flex justify-center mb-4">
         <Button
           as={"a"}
@@ -54,15 +54,17 @@ export const GameList = () => {
         {sortedGamesData.slice(0, displayCount).map((game) => (
           <div
             key={game.id}
-            className="p-4 bg-white rounded-lg shadow-lg text-center"
+            className="flex flex-col p-4 bg-white rounded-lg shadow-lg text-center"
           >
-            <Image
-              src={game.gameImage}
-              alt={`${game.name} image`}
-              width="100%"
-              className="rounded-lg mb-4"
-            />
-
+            <div className="w-full h-80 flex justify-center items-center my-4">
+              <Image
+                src={game.gameImage}
+                alt={`${game.name} image`}
+                classNames={{
+                  img: "max-w-full max-h-full object-contain justify-center",
+                }}
+              />
+            </div>
             <h2 className="text-xl mb-2">
               <a
                 href={`/games/${game.id}`}
@@ -71,19 +73,22 @@ export const GameList = () => {
                 {game.name}
               </a>
             </h2>
-            <p>{game.description}</p>
-            <p>Created by: {game.creator.displayName}</p>
-            <p>Created: {formatDate(game.createdAt)}</p>
-            <Button
-              onClick={() => joinGameHandler(game.id)}
-              isPending={isPendingJoin}
-              fullWidth
-              color="primary"
-              size="lg"
-              className="shadow-lg"
-            >
-              Join Game
-            </Button>
+            <p className="mb-4">{game.description}</p>
+            <div className="justify-self-end mt-auto text-justify">
+              <p>Created by: {game.creator.displayName}</p>
+              <p>Created: {formatDate(game.createdAt)}</p>
+
+              <Button
+                onClick={() => joinGameHandler(game.id)}
+                isPending={isPendingJoin}
+                fullWidth
+                color="primary"
+                size="lg"
+                className="shadow-lg "
+              >
+                Join Game
+              </Button>
+            </div>
           </div>
         ))}
       </div>

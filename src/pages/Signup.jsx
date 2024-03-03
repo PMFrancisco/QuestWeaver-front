@@ -6,6 +6,8 @@ import { auth } from "../config/firebase";
 import { createProfile } from "../service/profile";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
 import { Button, Input } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -52,12 +54,9 @@ export default function SignUp() {
   return (
     <div className="flexCardContainer">
       <div className="cardInside">
-        <h1 className="cardHeader">
-          Sign Up
-        </h1>
+        <h1 className="cardHeader">Sign Up</h1>
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-
-        <Controller
+          <Controller
             name="displayName"
             control={control}
             rules={{ required: "This field is required" }}
@@ -181,7 +180,7 @@ export default function SignUp() {
             size="lg"
             className="shadow-lg"
           >
-            Login
+            Sign up
           </Button>
         </form>
         <Button
@@ -192,6 +191,7 @@ export default function SignUp() {
           size="lg"
           className="shadow-lg mt-6"
         >
+          <FontAwesomeIcon icon={faGoogle} />
           Sign up with Google
         </Button>
       </div>
