@@ -1,3 +1,18 @@
+# [0.9.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.8.0...v0.9.0) (2024-03-03)
+
+
+### Bug Fixes
+
+* changed packages ([8d1923b](https://github.com/PMFrancisco/QuestWeaver-front/commit/8d1923b7eafc9ed413335758d2f80654ffdbdcae))
+
+
+### Features
+
+* **game:** renders individual games ([6e069fd](https://github.com/PMFrancisco/QuestWeaver-front/commit/6e069fdd94f8f54e90c9a5077b562591fca66991))
+* players can join games ([6932658](https://github.com/PMFrancisco/QuestWeaver-front/commit/69326584b6370015c15ef644f6080af3d4f502f2))
+
+
+
 # [0.8.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.7.0...v0.8.0) (2024-03-01)
 
 
@@ -37,15 +52,6 @@
 ### Bug Fixes
 
 * hook for googlelogin ([58fa4f7](https://github.com/PMFrancisco/QuestWeaver-front/commit/58fa4f7722f126e43e1a43dad821d83f1a2d5dc4))
-
-
-
-# [0.5.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.4.0...v0.5.0) (2024-02-25)
-
-
-### Features
-
-* sign up creates user in firebase and DB ([4506e3c](https://github.com/PMFrancisco/QuestWeaver-front/commit/4506e3c51a81479623433db8ca6fe64bc9b3e78f))
 
 
 
