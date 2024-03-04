@@ -1,3 +1,17 @@
+# [0.10.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.9.0...v0.10.0) (2024-03-04)
+
+
+### Bug Fixes
+
+* anchor restored in GameList ([eedf0e6](https://github.com/PMFrancisco/QuestWeaver-front/commit/eedf0e6d06c148f09bf3de7b93c4f6b5bb0ff933))
+
+
+### Features
+
+* added footer and button styling ([d6d3711](https://github.com/PMFrancisco/QuestWeaver-front/commit/d6d371131af3251244b58de52191e879e4dcdf6f))
+
+
+
 # [0.9.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.8.0...v0.9.0) (2024-03-03)
 
 
@@ -43,15 +57,6 @@
 ### Features
 
 * added profile from DB instead of firebase ([0dc8804](https://github.com/PMFrancisco/QuestWeaver-front/commit/0dc8804f1e9b874871aaa516d027f389c84a0026))
-
-
-
-## [0.5.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.5.0...v0.5.1) (2024-02-25)
-
-
-### Bug Fixes
-
-* hook for googlelogin ([58fa4f7](https://github.com/PMFrancisco/QuestWeaver-front/commit/58fa4f7722f126e43e1a43dad821d83f1a2d5dc4))
 
 
 
