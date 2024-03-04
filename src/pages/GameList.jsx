@@ -56,7 +56,7 @@ export const GameList = () => {
             key={game.id}
             className="flex flex-col p-4 bg-white rounded-lg shadow-lg text-center"
           >
-            <div className="w-full h-80 flex justify-center items-center my-4">
+            <div className="w-full md:h-80 flex justify-center items-center my-4">
               <Image
                 src={game.gameImage}
                 alt={`${game.name} image`}

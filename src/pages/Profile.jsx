@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthProvider";
 import { Button, Image } from "@nextui-org/react";
 
+
 export const Profile = () => {
   const { currentUser } = useAuth();
   const { data: profileData, isPending } = useQuery({

@@ -23,7 +23,7 @@ export const NavBar = () => {
       >
         <NavbarBrand>
           <Image
-            src="https://res.cloudinary.com/du8nkdwcp/image/upload/c_thumb,w_200,g_face/v1708712757/logo_transparent_background_cpktqd.png"
+            src="https://res.cloudinary.com/du8nkdwcp/image/upload/v1708712757/QuestWeaver/logo_transparent_background_cpktqd.png"
             alt="Logo"
             width={100}
             height={100}
