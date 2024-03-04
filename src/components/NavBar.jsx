@@ -57,7 +57,6 @@ export const NavBar = () => {
           )}
         </NavbarContent>
       </Navbar>
-      <Outlet />
     </>
   );
 };

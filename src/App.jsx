@@ -10,12 +10,13 @@ import { EditProfile } from "./pages/EditProfile";
 import { GameList } from "./pages/GameList";
 import { CreateGame } from "./pages/CreateGame";
 import { Game } from "./pages/Game";
+import { Layout } from "./components/Layout";
 
 function App() {
   return (
     <NextUIProvider>
       <Routes>
-        <Route element={<NavBar />}>
+        <Route element={<Layout />}>
           <Route element={<RequireAuth />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
