@@ -34,6 +34,10 @@ export const Game = () => {
     (participant) => participant.userId === currentUser.uid
   );
 
+  const isPendingApproval = gameData.participants.some(
+    (participant) => !participant.isAccepted
+  )
+
   return (
     <>
       <div className="flexCardContainer">
@@ -60,9 +64,8 @@ export const Game = () => {
               >
                 Join Game
               </Button>
-            ) : gameData.participants.some(
-                (participant) => !participant.isAccepted
-              ) ? (
+            ) : isPendingApproval
+               ? (
               <Button
                 isDisabled
                 fullWidth

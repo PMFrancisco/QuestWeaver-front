@@ -62,45 +62,49 @@ export const GameList = () => {
                   }}
                 />
               </div>
-              <h2 className="text-xl mb-2">{game.name}</h2>
+              <a
+                href={`/games/${game.id}`}
+                className="text-blue-600 hover:text-blue-700 text-xl"
+              >
+                {game.name}
+              </a>
               <p className="mb-4">{game.description}</p>
               <div className="justify-self-end mt-auto text-justify">
-
-              <p>Created by: {game.creator.displayName}</p>
-              <p>Created: {formatDate(game.createdAt)}</p>
-              {canJoin ? (
-                <Button
-                  onClick={() => joinGameHandler(game.id)}
-                  isPending={isPendingJoin}
-                  fullWidth
-                  color="primary"
-                  size="lg"
-                  className="shadow-lg mt-2"
-                >
-                  Join Game
-                </Button>
-              ) : isPendingApproval ? (
-                <Button
-                  isDisabled
-                  fullWidth
-                  color="danger"
-                  size="lg"
-                  className="shadow-lg mt-2"
-                >
-                  Pending Approval
-                </Button>
-              ) : (
-                <Button
-                  isDisabled
-                  fullWidth
-                  color="primary"
-                  size="lg"
-                  className="shadow-lg mt-2"
-                >
-                  Joined
-                </Button>
-              )}
-            </div>
+                <p>Created by: {game.creator.displayName}</p>
+                <p>Created: {formatDate(game.createdAt)}</p>
+                {canJoin ? (
+                  <Button
+                    onClick={() => joinGameHandler(game.id)}
+                    isPending={isPendingJoin}
+                    fullWidth
+                    color="primary"
+                    size="lg"
+                    className="shadow-lg mt-2"
+                  >
+                    Join Game
+                  </Button>
+                ) : isPendingApproval ? (
+                  <Button
+                    isDisabled
+                    fullWidth
+                    color="danger"
+                    size="lg"
+                    className="shadow-lg mt-2"
+                  >
+                    Pending Approval
+                  </Button>
+                ) : (
+                  <Button
+                    isDisabled
+                    fullWidth
+                    color="primary"
+                    size="lg"
+                    className="shadow-lg mt-2"
+                  >
+                    Joined
+                  </Button>
+                )}
+              </div>
             </div>
           );
         })}
@@ -120,4 +124,3 @@ export const GameList = () => {
     </div>
   );
 };
-
