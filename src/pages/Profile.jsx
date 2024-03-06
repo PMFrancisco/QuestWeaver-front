@@ -4,6 +4,7 @@ import { getUserProfile } from "../service/profile";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthProvider";
 import { Button, Image } from "@nextui-org/react";
+import { Link } from "react-router-dom";
 
 
 export const Profile = () => {
@@ -37,8 +38,8 @@ export const Profile = () => {
         </p>
         <div className="space-y-6 mt-8">
           <Button
-            as={"a"}
-            href="/profile/edit"
+            as={Link}
+            to="/profile/edit"
             value="Edit Profile"
             isDisabled={isPending}
             fullWidth

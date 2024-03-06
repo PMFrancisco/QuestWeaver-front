@@ -10,7 +10,7 @@ import { EditProfile } from "./pages/EditProfile";
 import { GameList } from "./pages/GameList";
 import { CreateGame } from "./pages/CreateGame";
 import { Game } from "./pages/Game";
-import { Layout } from "./components/Layout";
+import { Layout } from "./components/Layouts/Layout";
 
 function App() {
   return (

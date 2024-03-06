@@ -4,11 +4,20 @@ import { useQuery } from "@tanstack/react-query";
 import { getOneGame } from "../service/games";
 import { useParams } from "react-router-dom";
 import { formatDate } from "../utils/formatDate";
-import { Button, Image } from "@nextui-org/react";
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Image,
+} from "@nextui-org/react";
 import { useJoinGameMutation } from "../hooks/useJoinGameMutation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookBookmark } from "@fortawesome/free-solid-svg-icons";
 import { faMap } from "@fortawesome/free-solid-svg-icons";
+import { useAcceptPlayerMutation } from "../hooks/useAcceptPlayerMutation";
 
 export const Game = () => {
   const { currentUser } = useAuth();
@@ -19,11 +28,18 @@ export const Game = () => {
     queryFn: () => getOneGame(gameId, currentUser.uid),
   });
 
-  const { joinGame: joinGameMutation, isJoining: isPendingJoin } =
+  const { joinGame: joinGameMutation, isPending: isPendingJoin } =
     useJoinGameMutation(currentUser?.uid);
 
   const joinGameHandler = (gameId) => {
     joinGameMutation(gameId);
+  };
+
+  const { acceptPlayer: acceptPlayerMutation, isPending: isPendingAccept } =
+    useAcceptPlayerMutation();
+
+  const acceptPlayerHandler = (userId) => {
+    acceptPlayerMutation({ userId, gameId });
   };
 
   if (isPending) {
@@ -35,8 +51,11 @@ export const Game = () => {
   );
 
   const isPendingApproval = gameData.participants.some(
-    (participant) => !participant.isAccepted
-  )
+    (participant) =>
+      participant.userId === currentUser.uid && !participant.isAccepted
+  );
+
+  const isCreator = gameData.creatorId === currentUser.uid;
 
   return (
     <>
@@ -64,8 +83,7 @@ export const Game = () => {
               >
                 Join Game
               </Button>
-            ) : isPendingApproval
-               ? (
+            ) : isPendingApproval ? (
               <Button
                 isDisabled
                 fullWidth
@@ -113,51 +131,79 @@ export const Game = () => {
             </div>
           </div>
 
-          <div>
+          <div className="flex flex-col justify-center self-center md:w-4/5 lg:w-3/5 mx-auto mt-4">
             <h2>Players</h2>
             <ul>
-              {gameData.participants
-                .filter((participant) => participant.isAccepted)
-                .map((participant) => (
-                  <li key={participant.id}>
-                    <img
-                      src={participant.user.profileImage}
-                      alt="Profile Image"
-                    />
-                    <span>{participant.user.displayName}</span>
-                  </li>
-                ))}
+              <div className="flex justify-center gap-4 ">
+                {gameData.participants
+                  .filter((participant) => participant.isAccepted)
+                  .map((participant) => (
+                    <li key={participant.id}>
+                      <Dropdown placement="top-start">
+                        <DropdownTrigger>
+                          <Avatar
+                            isBordered
+                            src={participant.user.profileImage}
+                            alt="Profile Image"
+                            as="button"
+                          />
+                        </DropdownTrigger>
+                        <DropdownMenu aria-label="Participant Actions">
+                          <DropdownItem
+                            textValue={participant.user.displayName}
+                          >
+                            <p className="font-bold">
+                              {participant.user.displayName}
+                            </p>
+                            <p>{participant.role}</p>
+                          </DropdownItem>
+                        </DropdownMenu>
+                      </Dropdown>
+                    </li>
+                  ))}
+              </div>
             </ul>
           </div>
 
-          {gameData.participants.role == "creator" && (
-            <div>
+          {isCreator && (
+            <div className="flex flex-col justify-center self-center md:w-4/5 lg:w-3/5 mx-auto mt-4">
               <h2>Pending Players</h2>
               <ul>
-                {gameData.participants
-                  .filter((participant) => !participant.isAccepted)
-                  .map((participant) => (
-                    <li key={participant.id}>
-                      <img
-                        src={participant.user.profileImage}
-                        alt="Profile Image"
-                      />
-                      <span>{participant.user.displayName}</span>
-                      <form action="/games/acceptPlayer" method="post">
-                        <input
-                          type="hidden"
-                          name="gameId"
-                          value={gameData.id}
-                        />
-                        <input
-                          type="hidden"
-                          name="userId"
-                          value={participant.user.id}
-                        />
-                        <button type="submit">Accept</button>
-                      </form>
-                    </li>
-                  ))}
+                <div className="flex justify-center gap-4 ">
+                  {gameData.participants
+                    .filter((participant) => !participant.isAccepted)
+                    .map((participant) => (
+                      <li key={participant.id}>
+                        <Dropdown placement="top-start">
+                          <DropdownTrigger>
+                            <Avatar
+                              isBordered
+                              color="danger"
+                              src={participant.user.profileImage}
+                              alt="Profile Image"
+                              as="button"
+                            />
+                          </DropdownTrigger>
+                          <DropdownMenu aria-label="Participant Actions">
+                            <DropdownItem
+                              textValue={participant.user.displayName}
+                            >
+                              <p>{participant.user.displayName}</p>
+                              <Button
+                                onClick={() =>
+                                  acceptPlayerHandler(participant.userId)
+                                }
+                                disabled={isPendingAccept}
+                                color="primary"
+                              >
+                                Accept
+                              </Button>
+                            </DropdownItem>
+                          </DropdownMenu>
+                        </Dropdown>
+                      </li>
+                    ))}
+                </div>
               </ul>
             </div>
           )}
