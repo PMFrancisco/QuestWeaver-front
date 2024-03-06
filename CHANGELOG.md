@@ -1,3 +1,12 @@
+# [0.11.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.10.0...v0.11.0) (2024-03-06)
+
+
+### Features
+
+* can accept players ([18d6f60](https://github.com/PMFrancisco/QuestWeaver-front/commit/18d6f6092ee421dd74e84ff479f3b47be091bd27))
+
+
+
 # [0.10.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.9.0...v0.10.0) (2024-03-04)
 
 
@@ -48,15 +57,6 @@
 ### Features
 
 * added edition of profile ([05c6cd3](https://github.com/PMFrancisco/QuestWeaver-front/commit/05c6cd36989b293db3646500ac8b748e7570fc17))
-
-
-
-# [0.6.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.5.1...v0.6.0) (2024-02-26)
-
-
-### Features
-
-* added profile from DB instead of firebase ([0dc8804](https://github.com/PMFrancisco/QuestWeaver-front/commit/0dc8804f1e9b874871aaa516d027f389c84a0026))
 
 
 
