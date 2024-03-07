@@ -65,12 +65,13 @@ export const GameList = () => {
               key={game.id}
               className="flex flex-col p-4 bg-white rounded-lg shadow-lg text-center"
             >
-              <div className="w-full md:h-80 flex justify-center items-center my-4">
+              <div className="w-full max-h-96 md:h-80 flex justify-center items-center my-4">
                 <Image
                   src={game.gameImage}
                   alt={`${game.name} image`}
                   classNames={{
                     img: "max-w-full max-h-full object-contain justify-center",
+                    wrapper: "w-full h-full items-center flex",
                   }}
                 />
               </div>

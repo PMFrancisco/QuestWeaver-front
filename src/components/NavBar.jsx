@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Navbar,
   NavbarBrand,
@@ -14,6 +14,7 @@ import { handleSignOut } from "../service/authService";
 
 export const NavBar = () => {
   const auth = useAuth();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -42,7 +43,7 @@ export const NavBar = () => {
                 <Link to="/profile">Profile</Link>
               </NavbarItem>
               <NavbarItem>
-                <button onClick={() => handleSignOut()}>Logout</button>
+                <button onClick={() => handleSignOut(navigate)}>Logout</button>
               </NavbarItem>
             </>
           ) : (

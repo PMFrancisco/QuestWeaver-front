@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { getOneGame } from "../service/games";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { formatDate } from "../utils/formatDate";
 import {
   Avatar,
@@ -107,8 +107,8 @@ export const Game = () => {
 
             <div className="flex mt-2 gap-2">
               <Button
-                as={"a"}
-                href="/wiki"
+                as={Link}
+                to={`/games/${gameId}/wiki`}
                 color="secondary"
                 size="md"
                 className="shadow-lg grow"
@@ -118,7 +118,7 @@ export const Game = () => {
                 Wiki
               </Button>
               <Button
-                as={"a"}
+                to={Link}
                 href="/maps"
                 color="secondary"
                 size="md"

@@ -18,6 +18,7 @@ export const AuthProvider = ({ children }) => {
         console.log('Usuario logueado:', user);
         setCurrentUser(user);
       }
+      setCurrentUser(user)
       setIsLoading(false)
       
     });

@@ -4,11 +4,12 @@ import { getUserProfile } from "../service/profile";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "../context/AuthProvider";
 import { Button, Image } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export const Profile = () => {
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
   const { data: profileData, isPending } = useQuery({
     queryKey: ["profile", currentUser?.uid],
     queryFn: () => getUserProfile(currentUser?.uid),
@@ -56,7 +57,7 @@ export const Profile = () => {
             color="secondary"
             size="lg"
             className="shadow-lg"
-            onClick={() => handleSignOut()}
+            onClick={() => handleSignOut(navigate)}
           >
             Logout
           </Button>
