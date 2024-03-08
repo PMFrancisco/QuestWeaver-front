@@ -81,7 +81,7 @@ export const GameList = () => {
               >
                 {game.name}
               </Link>
-              <p className="mb-4">{game.description}</p>
+              <p className="mb-4 line-clamp-4">{game.description}</p>
               <div className="justify-self-end mt-auto text-justify">
                 <p>Created by: {game.creator.displayName}</p>
                 <p>Created: {formatDate(game.createdAt)}</p>
