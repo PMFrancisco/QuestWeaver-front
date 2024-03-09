@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth } from '../../context/AuthProvider';
+import { getOneGame } from '../../service/games';
 
 export const WikiMain = () => {
   const { currentUser } = useAuth();
@@ -18,8 +19,8 @@ export const WikiMain = () => {
 
   return (
   <div className="flex-2 p-5 justify-items-center w-full">
-    <h1 className='cardHeader'>{gameData.name}</h1>
-    <p className="text-justify">{gameData.description}</p>
+    <h1 className='cardHeader'>{gameData?.name}</h1>
+    <p className="text-justify">{gameData?.description}</p>
   </div>
   );
 };
