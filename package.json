@@ -1,6 +1,6 @@
 {
   "name": "questweaver-front",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Frontend for a Virtual Tabletop and TTRPG Repository",
   "main": "index.js",
   "scripts": {

@@ -1,3 +1,18 @@
+# [0.12.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.11.0...v0.12.0) (2024-03-09)
+
+
+### Bug Fixes
+
+* accordion categories ([188f5b2](https://github.com/PMFrancisco/QuestWeaver-front/commit/188f5b2085691a4a09a7e0e09fd363221491fde4))
+
+
+### Features
+
+* added Wiki and WikiSidebar and adds categories ([857b972](https://github.com/PMFrancisco/QuestWeaver-front/commit/857b9725c08de192ceb2428b66bf77ef55a89ed5))
+* creates new wiki pages ([91f9e22](https://github.com/PMFrancisco/QuestWeaver-front/commit/91f9e2226b3addbd052b47eb3f39c69fdfeba01c))
+
+
+
 # [0.11.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.10.0...v0.11.0) (2024-03-06)
 
 
@@ -42,21 +57,6 @@
 ### Features
 
 * added creation and get games, added profile image edit ([d9aae69](https://github.com/PMFrancisco/QuestWeaver-front/commit/d9aae6987688d258da83f3335a7969ba6c8c30e0))
-
-
-
-# [0.7.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.6.0...v0.7.0) (2024-02-28)
-
-
-### Bug Fixes
-
-* added image from NUI ([00f7f21](https://github.com/PMFrancisco/QuestWeaver-front/commit/00f7f21cbf66bec72760ccbbea83226f97ea8661))
-* signup username added ([a505776](https://github.com/PMFrancisco/QuestWeaver-front/commit/a5057764044106f5c5b483d67ef0b1783675e457))
-
-
-### Features
-
-* added edition of profile ([05c6cd3](https://github.com/PMFrancisco/QuestWeaver-front/commit/05c6cd36989b293db3646500ac8b748e7570fc17))
 
 
 
