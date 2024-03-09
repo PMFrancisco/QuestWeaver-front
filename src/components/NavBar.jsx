@@ -17,11 +17,8 @@ export const NavBar = () => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <Navbar
-        position="static"
-        className="flex bg-blue-600 shadow-lg text-white"
-      >
+    <Navbar position="static" className="flex bg-blue-600 shadow-lg text-white">
+      <NavbarContent>
         <NavbarBrand>
           <Image
             src="https://res.cloudinary.com/du8nkdwcp/image/upload/v1708712757/QuestWeaver/logo_transparent_background_cpktqd.png"
@@ -31,33 +28,34 @@ export const NavBar = () => {
           />
           <Link to="/">Quest Weaver</Link>
         </NavbarBrand>
-        <NavbarContent>
-          <NavbarItem>
-            <Link to="/games">Games</Link>
-          </NavbarItem>
-        </NavbarContent>
-        <NavbarContent justify="flex-end">
-          {auth.currentUser ? (
-            <>
-              <NavbarItem>
-                <Link to="/profile">Profile</Link>
-              </NavbarItem>
-              <NavbarItem>
-                <button onClick={() => handleSignOut(navigate)}>Logout</button>
-              </NavbarItem>
-            </>
-          ) : (
-            <>
-              <NavbarItem>
-                <Link to="/login">Login</Link>
-              </NavbarItem>
-              <NavbarItem>
-                <Link to="/signup">Sign up</Link>
-              </NavbarItem>
-            </>
-          )}
-        </NavbarContent>
-      </Navbar>
-    </>
+      </NavbarContent>
+
+      <NavbarContent>
+        <NavbarItem>
+          <Link to="/games">Games</Link>
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="flex-end">
+        {auth.currentUser ? (
+          <>
+            <NavbarItem>
+              <Link to="/profile">Profile</Link>
+            </NavbarItem>
+            <NavbarItem>
+              <button onClick={() => handleSignOut(navigate)}>Logout</button>
+            </NavbarItem>
+          </>
+        ) : (
+          <>
+            <NavbarItem>
+              <Link to="/login">Login</Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link to="/signup">Sign up</Link>
+            </NavbarItem>
+          </>
+        )}
+      </NavbarContent>
+    </Navbar>
   );
 };

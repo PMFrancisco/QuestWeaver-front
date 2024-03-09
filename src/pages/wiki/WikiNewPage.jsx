@@ -38,8 +38,8 @@ export const WikiNewPage = () => {
   };
 
   return (
-    <div className="flexCardContainer">
-      <div className="cardInside">
+    <div className="flexCardContainer w-full">
+      <div className="cardInside ">
         <h1 className="cardHeader">Create New Game Information</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <Controller

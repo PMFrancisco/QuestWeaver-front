@@ -8,11 +8,11 @@ export const WikiLayout = () => {
   return (
     <GameDataProvider gameId={gameId}>
       <div className="flexCardContainer">
-        <div className="cardInside flex flex-row h-full">
-          <div className="w-1/3">
+        <div className="cardInside flex flex-col md:flex-row h-full">
+          <div className="md:w-1/3">
             <WikiSidebar />
           </div>
-          <div className="flex w-2/3 mx-auto">
+          <div className="flex w-full md:w-2/3 mx-auto">
             <Outlet />
           </div>
         </div>
