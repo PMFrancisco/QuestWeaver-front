@@ -17,9 +17,9 @@ export const WikiMain = () => {
   }
 
   return (
-  <div className="flex-2 p-5">
+  <div className="flex-2 p-5 justify-items-center w-full">
     <h1 className='cardHeader'>{gameData.name}</h1>
-    <p>{gameData.description}</p>
+    <p className="text-justify">{gameData.description}</p>
   </div>
   );
 };
