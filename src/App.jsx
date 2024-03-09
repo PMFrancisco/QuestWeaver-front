@@ -10,8 +10,8 @@ import { GameList } from "./pages/GameList";
 import { CreateGame } from "./pages/CreateGame";
 import { Game } from "./pages/Game";
 import { Layout } from "./components/Layouts/Layout";
-import { WikiMain } from "./pages/WikiMain";
-import { WikiSidebar } from "./components/WikiSidebar";
+import { WikiMain } from "./pages/wiki/WikiMain";
+import { WikiLayout } from "./components/Layouts/WikiLayout";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
             <Route path="/games" element={<GameList />} />
             <Route path="/newgame" element={<CreateGame />} />
             <Route path="/games/:gameId" element={<Game />} />
-            <Route element={<WikiSidebar />}>
+            <Route element={<WikiLayout />}>
               <Route path="/games/:gameId/wiki" element={<WikiMain />} />
             </Route>
           </Route>

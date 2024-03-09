@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { useAuth } from '../context/AuthProvider';
 import { useParams } from 'react-router-dom';
+import { useAuth } from '../../context/AuthProvider';
 
 export const WikiMain = () => {
   const { currentUser } = useAuth();
@@ -17,12 +17,10 @@ export const WikiMain = () => {
   }
 
   return (
-<div className="flex max-w-6xl mx-auto">
   <div className="flex-2 p-5">
-    <h2>{gameData.name}</h2>
+    <h1 className='cardHeader'>{gameData.name}</h1>
     <p>{gameData.description}</p>
   </div>
-</div>
   );
 };
 
