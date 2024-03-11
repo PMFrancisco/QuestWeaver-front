@@ -13,7 +13,7 @@ import { Layout } from "./components/Layouts/Layout";
 import { WikiMain } from "./pages/wiki/WikiMain";
 import { WikiLayout } from "./components/Layouts/WikiLayout";
 import { WikiPage } from "./pages/wiki/WikiPage";
-import { WikiNewPage } from "./pages/wiki/WikiNewPage";
+import { WikiPageForm } from "./pages/wiki/WikiPageForm";
 
 function App() {
   return (
@@ -29,8 +29,9 @@ function App() {
             <Route path="/games/:gameId" element={<Game />} />
             <Route element={<WikiLayout />}>
               <Route path="/games/:gameId/wiki" element={<WikiMain />} />
+              <Route path="/games/:gameId/wiki/new" element={<WikiPageForm />} />
               <Route path="/games/:gameId/wiki/:gameInfoId" element={<WikiPage />} />
-              <Route path="/games/:gameId/wiki/new" element={<WikiNewPage />} />
+              <Route path="/games/:gameId/wiki/:gameInfoId/edit" element={<WikiPageForm />} />
             </Route>
           </Route>
           <Route element={<AlreadyAuth />}>
