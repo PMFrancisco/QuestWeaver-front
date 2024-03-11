@@ -13,3 +13,8 @@ export const updateGameInfo = async (gameInfoId, gameInfo) => {
   const { data } = await api.put(`gameInfo/update/${gameInfoId}`, gameInfo);
   return data;
 };
+
+export const deleteGameInfo = async (gameInfoId) => {
+  const { data } = await api.delete(`gameInfo/delete/${gameInfoId}`);
+  return data;
+}

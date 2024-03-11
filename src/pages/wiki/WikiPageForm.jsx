@@ -58,6 +58,9 @@ export const WikiPageForm = () => {
       queryClient.invalidateQueries(["gameInfo", gameInfoId]);
       queryClient.invalidateQueries(["categories", gameId]);
     },
+    onError: (error) => {
+      console.error("Failed to update game info:", error);
+    }
   });
 
   useEffect(() => {
@@ -140,7 +143,7 @@ export const WikiPageForm = () => {
               />
             )}
           />
-          <Button type="submit" loading={isPending} fullWidth color="primary">
+          <Button type="submit" isPending={isPending} fullWidth color="primary">
             {isEdit ? "Update" : "Submit"}
           </Button>
         </form>
