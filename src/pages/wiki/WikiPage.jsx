@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getGameInfo } from "../../service/gameInfo";
+import { Spinner } from "@nextui-org/react";
 
 export const WikiPage = () => {
   const { gameInfoId } = useParams();
@@ -11,7 +12,14 @@ export const WikiPage = () => {
   });
 
   if (isPending) {
-    return <div>Loading...</div>;
+    return (
+      <Spinner
+        label="Loading..."
+        color="primary"
+        size="lg"
+        className="flex justify-center items-center h-screen"
+      />
+    );
   }
 
   return (

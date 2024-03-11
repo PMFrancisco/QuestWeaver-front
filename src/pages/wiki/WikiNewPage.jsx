@@ -1,6 +1,6 @@
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Input, Select, SelectItem, Textarea } from "@nextui-org/react";
 import { addGameInfo } from "../../service/gameInfo";
@@ -10,6 +10,7 @@ export const WikiNewPage = () => {
   const navigate = useNavigate();
   const { gameId } = useParams();
   const { categories } = useGameDataContext();
+  const queryClient = useQueryClient();
 
   const {
     control,
@@ -19,14 +20,15 @@ export const WikiNewPage = () => {
 
   const { mutate: createGameInfoMutation, isPending } = useMutation({
     mutationKey: "createGameInfo",
- mutationFn: async (formData) => {
-  const newGameInfo = { ...formData, gameId };
-  const data = await addGameInfo(newGameInfo);
-  return data;
-},
+    mutationFn: async (formData) => {
+      const newGameInfo = { ...formData, gameId };
+      const data = await addGameInfo(newGameInfo);
+      return data;
+    },
 
     onSuccess: (data) => {
       navigate(`/games/${gameId}/wiki/${data.id}`);
+      queryClient.invalidateQueries(["categories", gameId]);
     },
     onError: (error) => {
       console.error("Error creating game information:", error);
@@ -40,7 +42,7 @@ export const WikiNewPage = () => {
   return (
     <div className="flexCardContainer w-full">
       <div className="cardInside ">
-        <h1 className="cardHeader">Create New Game Information</h1>
+        <h1 className="cardHeader">Create New Entry</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <Controller
             name="categoryId"
@@ -48,8 +50,7 @@ export const WikiNewPage = () => {
             rules={{ required: "This field is required" }}
             render={({ field: { onChange } }) => (
               <Select
-              aria-label="Category"
-
+                aria-label="Category"
                 label="Category"
                 onChange={onChange}
                 initialValue=""
@@ -57,7 +58,11 @@ export const WikiNewPage = () => {
               >
                 <SelectItem value="">Select a Category</SelectItem>
                 {categories?.map((category) => [
-                  <SelectItem key={category.id} value={category.id} textValue={category.name}>
+                  <SelectItem
+                    key={category.id}
+                    value={category.id}
+                    textValue={category.name}
+                  >
                     {category.name}
                   </SelectItem>,
                   category.children.map((child) => (
@@ -91,7 +96,7 @@ export const WikiNewPage = () => {
             )}
           />
           <Button type="submit" isLoading={isPending} fullWidth color="primary">
-            Create GameInfo
+            Submit
           </Button>
         </form>
       </div>

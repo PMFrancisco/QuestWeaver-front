@@ -43,7 +43,14 @@ export const Game = () => {
   };
 
   if (isPending) {
-    return <p>Loading...</p>;
+    return (
+      <Spinner
+        label="Loading..."
+        color="primary"
+        size="lg"
+        className="flex justify-center items-center h-screen"
+      />
+    );
   }
 
   const canJoin = !gameData.participants.some(

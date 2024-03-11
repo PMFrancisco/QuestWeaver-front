@@ -67,7 +67,14 @@ export const EditProfile = () => {
   const toggleForm = () => setIsEditingImage(!isEditingImage);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <Spinner
+        label="Loading..."
+        color="primary"
+        size="lg"
+        className="flex justify-center items-center h-screen"
+      />
+    );
   }
 
   return (

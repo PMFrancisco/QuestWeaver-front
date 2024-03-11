@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { getAllGames } from "../service/games"; // Ensure this is correctly imported
-import { Button, Image } from "@nextui-org/react";
+import { Button, Image, Spinner } from "@nextui-org/react";
 import { formatDate } from "../utils/formatDate";
 import { useJoinGameMutation } from "../hooks/useJoinGameMutation";
 import { Link } from "react-router-dom";
@@ -27,7 +27,14 @@ export const GameList = () => {
   };
 
   if (isPending) {
-    return <p>Loading...</p>;
+    return (
+      <Spinner
+        label="Loading..."
+        color="primary"
+        size="lg"
+        className="flex justify-center items-center h-screen"
+      />
+    );
   }
 
   const sortedGamesData = gamesData.sort(

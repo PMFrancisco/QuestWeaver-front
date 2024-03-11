@@ -1,6 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from '../config/firebase';
+import { auth } from "../config/firebase";
+import { Spinner } from "@nextui-org/react";
 
 const AuthContext = React.createContext();
 
@@ -15,18 +16,24 @@ export const AuthProvider = ({ children }) => {
     const user = auth.currentUser;
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log('Usuario logueado:', user);
+        console.log("Usuario logueado:", user);
         setCurrentUser(user);
       }
-      setCurrentUser(user)
-      setIsLoading(false)
-      
+      setCurrentUser(user);
+      setIsLoading(false);
     });
 
     return unsubscribe;
   }, []);
   if (isLoading) {
-    return <h1>Is Loading</h1>
+    return (
+      <Spinner
+        label="Loading..."
+        color="primary"
+        size="lg"
+        className="flex justify-center items-center h-screen"
+      />
+    );
   }
   return (
     <AuthContext.Provider value={{ currentUser }}>
