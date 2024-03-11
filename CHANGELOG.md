@@ -1,3 +1,18 @@
+# [0.13.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.12.0...v0.13.0) (2024-03-11)
+
+
+### Bug Fixes
+
+* **wikimain:** failed import ([5395d08](https://github.com/PMFrancisco/QuestWeaver-front/commit/5395d0841740debf78d36062787637469d37b7b0))
+
+
+### Features
+
+* delete wiki pages ([968964b](https://github.com/PMFrancisco/QuestWeaver-front/commit/968964beb9a4a8653b850b4dfe1cd48a1f738d06))
+* edit and new page now in only one page ([d7cdacc](https://github.com/PMFrancisco/QuestWeaver-front/commit/d7cdacc98d0dbd030c377fe665b9bc0495578365))
+
+
+
 # [0.12.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.11.0...v0.12.0) (2024-03-09)
 
 
@@ -48,15 +63,6 @@
 
 * **game:** renders individual games ([6e069fd](https://github.com/PMFrancisco/QuestWeaver-front/commit/6e069fdd94f8f54e90c9a5077b562591fca66991))
 * players can join games ([6932658](https://github.com/PMFrancisco/QuestWeaver-front/commit/69326584b6370015c15ef644f6080af3d4f502f2))
-
-
-
-# [0.8.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.7.0...v0.8.0) (2024-03-01)
-
-
-### Features
-
-* added creation and get games, added profile image edit ([d9aae69](https://github.com/PMFrancisco/QuestWeaver-front/commit/d9aae6987688d258da83f3335a7969ba6c8c30e0))
 
 
 
