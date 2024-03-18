@@ -1,5 +1,5 @@
 import { Controller, useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
@@ -8,6 +8,7 @@ import { useGoogleLogin } from "../hooks/useGoogleLogin";
 import { Button, Input } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { getStatus } from "../service/status";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -17,6 +18,11 @@ export default function SignUp() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { data, isFetching } = useQuery({
+    queryKey: ["status"],
+    queryFn: () => getStatus(),
+  });
 
   const { mutate: signupMutation, isPending } = useMutation({
     mutationKey: "signup",
@@ -50,6 +56,12 @@ export default function SignUp() {
   const onSubmit = async (data) => {
     signupMutation(data);
   };
+
+  if (isFetching) {
+    return (
+      <p>Try again in a minute</p>
+    )
+  }
 
   return (
     <div className="flexCardContainer">

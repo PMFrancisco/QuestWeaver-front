@@ -11,7 +11,6 @@ import { AuthProvider } from './context/AuthProvider.jsx';
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <HashRouter>
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
@@ -20,5 +19,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </HashRouter>
-  </React.StrictMode>
 );

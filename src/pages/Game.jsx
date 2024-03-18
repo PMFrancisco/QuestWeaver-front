@@ -126,8 +126,8 @@ export const Game = () => {
                 Wiki
               </Button>
               <Button
-                to={Link}
-                href="/maps"
+                as={Link}
+                to={`/games/${gameId}/map`}
                 color="secondary"
                 size="md"
                 className="shadow-lg grow"

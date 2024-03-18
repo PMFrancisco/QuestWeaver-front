@@ -14,6 +14,7 @@ import { WikiMain } from "./pages/wiki/WikiMain";
 import { WikiLayout } from "./components/Layouts/WikiLayout";
 import { WikiPage } from "./pages/wiki/WikiPage";
 import { WikiPageForm } from "./pages/wiki/WikiPageForm";
+import { Map } from "./pages/Map";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/games" element={<GameList />} />
             <Route path="/newgame" element={<CreateGame />} />
             <Route path="/games/:gameId" element={<Game />} />
+            <Route path="/games/:gameId/map" element={<Map />} />
             <Route element={<WikiLayout />}>
               <Route path="/games/:gameId/wiki" element={<WikiMain />} />
               <Route path="/games/:gameId/wiki/new" element={<WikiPageForm />} />

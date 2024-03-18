@@ -20,7 +20,7 @@ export const WikiPage = () => {
     queryFn: () => getGameInfo(gameInfoId),
   });
 
-  const { mutate: deleteGame, isLoading: isPending } = useMutation({
+  const { mutate: deleteGame, isPending: isPending } = useMutation({
     mutationFn: () => deleteGameInfo(gameInfoId),
     onSuccess: () => {
       navigate(`/games/${gameId}/wiki`);
