@@ -1,3 +1,12 @@
+# [0.14.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.13.0...v0.14.0) (2024-03-18)
+
+
+### Features
+
+* drawing now loads ([c4d902f](https://github.com/PMFrancisco/QuestWeaver-front/commit/c4d902f9a6cddb85b8ea4bf9bc855717cc5b52a0))
+
+
+
 # [0.13.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.12.0...v0.13.0) (2024-03-11)
 
 
@@ -48,21 +57,6 @@
 ### Features
 
 * added footer and button styling ([d6d3711](https://github.com/PMFrancisco/QuestWeaver-front/commit/d6d371131af3251244b58de52191e879e4dcdf6f))
-
-
-
-# [0.9.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.8.0...v0.9.0) (2024-03-03)
-
-
-### Bug Fixes
-
-* changed packages ([8d1923b](https://github.com/PMFrancisco/QuestWeaver-front/commit/8d1923b7eafc9ed413335758d2f80654ffdbdcae))
-
-
-### Features
-
-* **game:** renders individual games ([6e069fd](https://github.com/PMFrancisco/QuestWeaver-front/commit/6e069fdd94f8f54e90c9a5077b562591fca66991))
-* players can join games ([6932658](https://github.com/PMFrancisco/QuestWeaver-front/commit/69326584b6370015c15ef644f6080af3d4f502f2))
 
 
 
