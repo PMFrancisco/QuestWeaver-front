@@ -21,8 +21,8 @@ function App() {
     <NextUIProvider>
       <Routes>
         <Route element={<Layout />}>
+          <Route path="/" element={<HomePage />} />
           <Route element={<RequireAuth />}>
-            <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profile/edit" element={<EditProfile />} />
             <Route path="/games" element={<GameList />} />
@@ -31,9 +31,18 @@ function App() {
             <Route path="/games/:gameId/map" element={<Map />} />
             <Route element={<WikiLayout />}>
               <Route path="/games/:gameId/wiki" element={<WikiMain />} />
-              <Route path="/games/:gameId/wiki/new" element={<WikiPageForm />} />
-              <Route path="/games/:gameId/wiki/:gameInfoId" element={<WikiPage />} />
-              <Route path="/games/:gameId/wiki/:gameInfoId/edit" element={<WikiPageForm />} />
+              <Route
+                path="/games/:gameId/wiki/new"
+                element={<WikiPageForm />}
+              />
+              <Route
+                path="/games/:gameId/wiki/:gameInfoId"
+                element={<WikiPage />}
+              />
+              <Route
+                path="/games/:gameId/wiki/:gameInfoId/edit"
+                element={<WikiPageForm />}
+              />
             </Route>
           </Route>
           <Route element={<AlreadyAuth />}>

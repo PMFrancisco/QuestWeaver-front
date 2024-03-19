@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
-import { getAllGames } from "../service/games"; // Ensure this is correctly imported
+import { getAllGames } from "../service/games";
 import { Button, Image, Spinner } from "@nextui-org/react";
 import { formatDate } from "../utils/formatDate";
 import { useJoinGameMutation } from "../hooks/useJoinGameMutation";

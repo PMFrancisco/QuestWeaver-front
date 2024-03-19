@@ -30,14 +30,12 @@ export const NavBar = () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent>
-        <NavbarItem>
-          <Link to="/games">Games</Link>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="flex-end">
+      <NavbarContent justify="flex">
         {auth.currentUser ? (
           <>
+            <NavbarItem>
+              <Link to="/games">Games</Link>
+            </NavbarItem>
             <NavbarItem>
               <Link to="/profile">Profile</Link>
             </NavbarItem>

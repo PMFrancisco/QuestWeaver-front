@@ -8,8 +8,9 @@ import io from "socket.io-client";
 import { saveMapStatus } from "../service/map";
 import { useParams } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { Button } from "@nextui-org/react";
-
+import { Button, ButtonGroup } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaintBrush, faPalette } from "@fortawesome/free-solid-svg-icons";
 
 const socket = io(import.meta.env.VITE_SOCKET_URL);
 
@@ -18,6 +19,7 @@ export const CanvasMap = ({ mapData }) => {
   const mapCanvasRef = useRef(null);
   const mapDrawingManagerRef = useRef(null);
   const { gameId } = useParams();
+  const [drawingMode, setDrawingMode] = useState(false);
 
   useEffect(() => {
     socket.on("connect", () => {});
@@ -76,13 +78,21 @@ export const CanvasMap = ({ mapData }) => {
     if (mapCanvas) {
       mapCanvas.mode =
         mapCanvas.mode === "interaction" ? "drawing" : "interaction";
+      setDrawingMode(!drawingMode);
     }
   };
 
-  const setBrushSettings = (color, size) => {
+  const setBrushColor = (color) => {
     const mapDrawingManager = mapDrawingManagerRef.current;
     if (mapDrawingManager && mapCanvasRef.current.mode === "drawing") {
-      mapDrawingManager.updateSettings({ brushColor: color, brushSize: size });
+      mapDrawingManager.updateSettings({ brushColor: color });
+    }
+  };
+
+  const setBrushSize = (size) => {
+    const mapDrawingManager = mapDrawingManagerRef.current;
+    if (mapDrawingManager && mapCanvasRef.current.mode === "drawing") {
+      mapDrawingManager.updateSettings({ brushSize: size });
     }
   };
 
@@ -123,15 +133,39 @@ export const CanvasMap = ({ mapData }) => {
 
   return (
     <div>
-      <div className="absolute z-50 gap-2">
-        <Button onClick={toggleDrawingMode}>Toggle Mode</Button>
-        <Button onClick={() => setBrushSettings("red", 5)}>Red Brush</Button>
-        <Button onClick={() => setBrushSettings("blue", 10)}>Blue Brush</Button>
-        <Button onClick={() => setBrushSettings("green", 15)}>
-          Green Brush
-        </Button>
-        <Button onClick={clearDrawings}>Clear Drawings</Button>
-        <Button onClick={handleSaveMap}>Save Map</Button>
+      <div className="absolute z-50 flex ">
+        <ButtonGroup>
+          <Button onPress={toggleDrawingMode}>
+            {drawingMode ? "Move" : "Draw"}
+          </Button>
+          {drawingMode ? (
+            <ButtonGroup radius="none">
+              <Button onPress={() => setBrushColor("black")}>
+                <FontAwesomeIcon icon={faPalette} className="text-black" />
+              </Button>
+              <Button onPress={() => setBrushColor("red")}>
+                <FontAwesomeIcon icon={faPalette} className="text-red-600" />
+              </Button>
+              <Button onPress={() => setBrushColor("blue")}>
+                <FontAwesomeIcon icon={faPalette} className="text-blue-600" />
+              </Button>
+              <Button onPress={() => setBrushColor("green")}>
+                <FontAwesomeIcon icon={faPalette} className="text-green-600" />
+              </Button>
+              <Button onPress={() => setBrushSize(5)}>
+                <FontAwesomeIcon icon={faPaintBrush} className="text-xs" />
+              </Button>
+              <Button onPress={() => setBrushSize(10)}>
+                <FontAwesomeIcon icon={faPaintBrush} className="text-base" />
+              </Button>
+              <Button onPress={() => setBrushSize(15)}>
+                <FontAwesomeIcon icon={faPaintBrush} className="text-lg" />
+              </Button>
+              <Button onPress={clearDrawings}>Clear Drawings</Button>
+            </ButtonGroup>
+          ) : null}
+          <Button onPress={handleSaveMap}>Save Map</Button>
+        </ButtonGroup>
       </div>
       <div
         ref={mapContainerRef}
