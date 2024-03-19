@@ -1,3 +1,12 @@
+# [0.16.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.15.1...v0.16.0) (2024-03-19)
+
+
+### Features
+
+* added homepage ([6e9705c](https://github.com/PMFrancisco/QuestWeaver-front/commit/6e9705cfda17012d2fecbac6b754f82912b830ae))
+
+
+
 ## [0.15.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.15.0...v0.15.1) (2024-03-19)
 
 
@@ -37,21 +46,6 @@
 
 * delete wiki pages ([968964b](https://github.com/PMFrancisco/QuestWeaver-front/commit/968964beb9a4a8653b850b4dfe1cd48a1f738d06))
 * edit and new page now in only one page ([d7cdacc](https://github.com/PMFrancisco/QuestWeaver-front/commit/d7cdacc98d0dbd030c377fe665b9bc0495578365))
-
-
-
-# [0.12.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.11.0...v0.12.0) (2024-03-09)
-
-
-### Bug Fixes
-
-* accordion categories ([188f5b2](https://github.com/PMFrancisco/QuestWeaver-front/commit/188f5b2085691a4a09a7e0e09fd363221491fde4))
-
-
-### Features
-
-* added Wiki and WikiSidebar and adds categories ([857b972](https://github.com/PMFrancisco/QuestWeaver-front/commit/857b9725c08de192ceb2428b66bf77ef55a89ed5))
-* creates new wiki pages ([91f9e22](https://github.com/PMFrancisco/QuestWeaver-front/commit/91f9e2226b3addbd052b47eb3f39c69fdfeba01c))
 
 
 
