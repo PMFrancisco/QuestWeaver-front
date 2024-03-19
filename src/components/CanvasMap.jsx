@@ -8,8 +8,10 @@ import io from "socket.io-client";
 import { saveMapStatus } from "../service/map";
 import { useParams } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import { Button } from "@nextui-org/react";
 
-const socket = io("http://localhost:3000");
+
+const socket = io(import.meta.env.VITE_SOCKET_URL);
 
 export const CanvasMap = ({ mapData }) => {
   const mapContainerRef = useRef(null);
@@ -122,14 +124,14 @@ export const CanvasMap = ({ mapData }) => {
   return (
     <div>
       <div className="absolute z-50 gap-2">
-        <button onClick={toggleDrawingMode}>Toggle Mode</button>
-        <button onClick={() => setBrushSettings("red", 5)}>Red Brush</button>
-        <button onClick={() => setBrushSettings("blue", 10)}>Blue Brush</button>
-        <button onClick={() => setBrushSettings("green", 15)}>
+        <Button onClick={toggleDrawingMode}>Toggle Mode</Button>
+        <Button onClick={() => setBrushSettings("red", 5)}>Red Brush</Button>
+        <Button onClick={() => setBrushSettings("blue", 10)}>Blue Brush</Button>
+        <Button onClick={() => setBrushSettings("green", 15)}>
           Green Brush
-        </button>
-        <button onClick={clearDrawings}>Clear Drawings</button>
-        <button onClick={handleSaveMap}>Save Map</button>
+        </Button>
+        <Button onClick={clearDrawings}>Clear Drawings</Button>
+        <Button onClick={handleSaveMap}>Save Map</Button>
       </div>
       <div
         ref={mapContainerRef}
