@@ -13,10 +13,9 @@ export const Map = () => {
     queryKey: ["map", gameId],
     queryFn: () => getMap(gameId),
     retry: 0,
-    refetchInterval: 5000
   });
 
-/*   if (isFetching) {
+  if (isFetching) {
     return (
       <Spinner
         label="Loading..."
@@ -25,7 +24,7 @@ export const Map = () => {
         className="flex justify-center items-center h-screen"
       />
     );
-  } */
+  }
 
   if (mapData) {
     return <CanvasMap mapData={mapData} />;

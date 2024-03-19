@@ -1,5 +1,9 @@
-import React, { useRef, useEffect } from "react";
-import { MapCanvas, MapInteractionManager, MapDrawingManager } from "../test";
+import React, { useRef, useEffect, useState } from "react";
+import {
+  MapCanvas,
+  MapInteractionManager,
+  MapDrawingManager,
+} from "virtual-tabletop-library";
 import io from "socket.io-client";
 import { saveMapStatus } from "../service/map";
 import { useParams } from "react-router-dom";
@@ -14,46 +18,55 @@ export const CanvasMap = ({ mapData }) => {
   const { gameId } = useParams();
 
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log("Connected to the server");
+    socket.on("connect", () => {});
+
+    socket.on("mapUpdated", (updatedMapData) => {
+      updateCanvas(updatedMapData.mapData);
     });
 
     return () => {
       socket.off("connect");
+      socket.off("mapUpdated");
+      socket.close();
     };
-  }, []);
+  }, [gameId]);
+
+  const updateCanvas = (mapData) => {
+    if (mapDrawingManagerRef.current) {
+      mapDrawingManagerRef.current.initializeDrawnElements(
+        mapData.drawnElements
+      );
+    }
+  };
 
   useEffect(() => {
+    const onMapLoaded = () => {
+      if (mapData.drawnElements) {
+        mapDrawingManagerRef.current.initializeDrawnElements(
+          mapData.drawnElements
+        );
+      }
+    };
 
-/*     if (mapContainerRef.current && !mapCanvasRef.current) {
- */      const onMapLoaded = () => {
-        if (mapData.drawnElements) {
-          mapDrawingManagerRef.current.initializeDrawnElements(
-            mapData.drawnElements
-          );
-        }
-      };
+    const mapCanvas = new MapCanvas(
+      "mapContainer",
+      {
+        mapUrl: mapData.mapUrl,
+        maxWidth: window.innerWidth,
+        maxHeight: window.innerHeight,
+      },
+      onMapLoaded
+    );
 
-      const mapCanvas = new MapCanvas(
-        "mapContainer",
-        {
-          mapUrl: mapData.mapUrl,
-          maxWidth: window.innerWidth,
-          maxHeight: window.innerHeight,
-        },
-        onMapLoaded
-      );
+    const mapDrawingManager = new MapDrawingManager(mapCanvas);
+    mapDrawingManagerRef.current = mapDrawingManager;
 
-      const mapDrawingManager = new MapDrawingManager(mapCanvas);
-      mapDrawingManagerRef.current = mapDrawingManager;
+    const mapInteractionManager = new MapInteractionManager(
+      mapCanvas,
+      mapDrawingManager
+    );
 
-      const mapInteractionManager = new MapInteractionManager(
-        mapCanvas,
-        mapDrawingManager
-      );
-
-      mapCanvasRef.current = mapCanvas;
-   /*  } */
+    mapCanvasRef.current = mapCanvas;
   }, [mapData]);
 
   const toggleDrawingMode = () => {
@@ -78,7 +91,7 @@ export const CanvasMap = ({ mapData }) => {
     }
   };
 
-  const { mutate: saveMap, isPending } = useMutation({
+  const { mutate: saveMap } = useMutation({
     mutationKey: ["saveMap"],
     mutationFn: (data) => saveMapStatus(data),
     onSuccess: () => {
@@ -95,10 +108,14 @@ export const CanvasMap = ({ mapData }) => {
 
     if (mapCanvas && mapDrawingManager) {
       const mapState = {
-        backgroundImageUrl: mapCanvas.mapUrl,
-        drawnElements: mapDrawingManager.drawnElements,
+        gameId,
+        mapData: {
+          backgroundImageUrl: mapCanvas.mapUrl,
+          drawnElements: mapDrawingManager.drawnElements,
+        },
       };
-      saveMap({ gameId, mapData: mapState });
+      socket.emit("saveMap", mapState);
+      saveMap(mapState);
     }
   };
 
