@@ -1,3 +1,12 @@
+## [0.15.1](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.15.0...v0.15.1) (2024-03-19)
+
+
+### Bug Fixes
+
+* added env for socket ([749c671](https://github.com/PMFrancisco/QuestWeaver-front/commit/749c671684d9244e0ce03947f30bc7b66d6fb05c))
+
+
+
 # [0.15.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.14.0...v0.15.0) (2024-03-19)
 
 
@@ -43,15 +52,6 @@
 
 * added Wiki and WikiSidebar and adds categories ([857b972](https://github.com/PMFrancisco/QuestWeaver-front/commit/857b9725c08de192ceb2428b66bf77ef55a89ed5))
 * creates new wiki pages ([91f9e22](https://github.com/PMFrancisco/QuestWeaver-front/commit/91f9e2226b3addbd052b47eb3f39c69fdfeba01c))
-
-
-
-# [0.11.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.10.0...v0.11.0) (2024-03-06)
-
-
-### Features
-
-* can accept players ([18d6f60](https://github.com/PMFrancisco/QuestWeaver-front/commit/18d6f6092ee421dd74e84ff479f3b47be091bd27))
 
 
 
