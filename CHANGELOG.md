@@ -1,3 +1,12 @@
+# [0.15.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.14.0...v0.15.0) (2024-03-19)
+
+
+### Features
+
+* map is now sync ([b43f6b1](https://github.com/PMFrancisco/QuestWeaver-front/commit/b43f6b195c2661d36f030b3ac3705bda752beee1))
+
+
+
 # [0.14.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.13.0...v0.14.0) (2024-03-18)
 
 
@@ -43,20 +52,6 @@
 ### Features
 
 * can accept players ([18d6f60](https://github.com/PMFrancisco/QuestWeaver-front/commit/18d6f6092ee421dd74e84ff479f3b47be091bd27))
-
-
-
-# [0.10.0](https://github.com/PMFrancisco/QuestWeaver-front/compare/v0.9.0...v0.10.0) (2024-03-04)
-
-
-### Bug Fixes
-
-* anchor restored in GameList ([eedf0e6](https://github.com/PMFrancisco/QuestWeaver-front/commit/eedf0e6d06c148f09bf3de7b93c4f6b5bb0ff933))
-
-
-### Features
-
-* added footer and button styling ([d6d3711](https://github.com/PMFrancisco/QuestWeaver-front/commit/d6d371131af3251244b58de52191e879e4dcdf6f))
 
 
 
