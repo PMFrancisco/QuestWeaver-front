@@ -29,11 +29,11 @@ export const CanvasMap = ({ mapData }) => {
     });
 
     return () => {
+      console.log("test");
       socket.off("connect");
       socket.off("mapUpdated");
-      socket.close();
     };
-  }, [gameId]);
+  }, []);
 
   const updateCanvas = (mapData) => {
     if (mapDrawingManagerRef.current) {
